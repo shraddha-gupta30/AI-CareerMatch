@@ -7,7 +7,6 @@ version: "1"
 databases:
   - name: ai-careermatch-db
     databaseName: ai_careermatch_db
-    user: postgres
     plan: free
     postgresMajorVersion: "16"
 
