@@ -141,10 +141,10 @@ export const ProfilePage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
-            Candidate Career Profile
+            Career Profile
           </h1>
           <p className="text-xs text-slate-600 mt-1">
-            Manage your career aspirations, professional background, and matching targets.
+            Manage your career aspirations, professional background, and matching preferences.
           </p>
         </div>
 
@@ -466,7 +466,7 @@ export const ProfilePage: React.FC = () => {
             </p>
           </div>
 
-          {/* Pipeline Integration Teaser (Phases 4-6) */}
+          {/* Next Step Card */}
           <div className="bg-gradient-to-r from-sky-50 to-indigo-50 border border-sky-200/70 rounded-xl p-5">
             <div className="flex items-start space-x-3">
               <div className="p-2 bg-sky-100 rounded-lg text-sky-700 mt-0.5">
@@ -474,10 +474,10 @@ export const ProfilePage: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-xs font-bold text-sky-900">
-                  Next Step: Resume Parsing & Match Discovery
+                  Next Step: Resume Extraction & Job Matching
                 </h4>
                 <p className="text-xs text-sky-700 mt-1">
-                  In upcoming phases, your uploaded PDF resume will extract verified skills into your profile and compare them against our 42 curated tech positions using 100% deterministic mathematical scoring.
+                  Upload your PDF resume to extract verified skills into your profile and discover how well your background aligns with curated industry roles.
                 </p>
               </div>
             </div>

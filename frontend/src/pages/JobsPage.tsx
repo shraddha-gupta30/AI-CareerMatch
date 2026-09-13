@@ -431,33 +431,33 @@ export const JobsPage: React.FC = () => {
         </span>
       );
     }
-    if (score >= 85) {
+    if (score >= 80) {
       return (
         <span className="text-xs font-bold text-emerald-800 bg-emerald-100/90 border border-emerald-300/80 px-2.5 py-1 rounded-full flex items-center space-x-1 shadow-sm">
           <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
-          <span>{score.toFixed(0)}% Match</span>
+          <span>{score.toFixed(0)}% • Strong Match</span>
         </span>
       );
     }
-    if (score >= 70) {
+    if (score >= 60) {
       return (
         <span className="text-xs font-bold text-sky-800 bg-sky-100/90 border border-sky-300/80 px-2.5 py-1 rounded-full flex items-center space-x-1 shadow-sm">
           <TrendingUp className="w-3.5 h-3.5 text-sky-700" />
-          <span>{score.toFixed(0)}% Match</span>
+          <span>{score.toFixed(0)}% • Good Match</span>
         </span>
       );
     }
-    if (score >= 50) {
+    if (score >= 40) {
       return (
         <span className="text-xs font-bold text-amber-800 bg-amber-100/90 border border-amber-300/80 px-2.5 py-1 rounded-full flex items-center space-x-1 shadow-sm">
           <AlertTriangle className="w-3.5 h-3.5 text-amber-700" />
-          <span>{score.toFixed(0)}% Match</span>
+          <span>{score.toFixed(0)}% • Building Match</span>
         </span>
       );
     }
     return (
       <span className="text-xs font-medium text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-full flex items-center space-x-1">
-        <span>{score.toFixed(0)}% Match</span>
+        <span>{score.toFixed(0)}% • Low Match</span>
       </span>
     );
   };
@@ -469,10 +469,10 @@ export const JobsPage: React.FC = () => {
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center space-x-2">
             <Briefcase className="w-6 h-6 text-sky-600" />
-            <span>Job Discovery & Explainable Matching</span>
+            <span>Jobs & Opportunities</span>
           </h1>
           <p className="text-sm text-slate-600 mt-1">
-            Browse our curated internal catalog of 42 real-world positions with 100% deterministic, explainable Career Profile matching.
+            Browse curated industry roles with transparent, skill-based match evaluation.
           </p>
         </div>
 
@@ -787,7 +787,7 @@ export const JobsPage: React.FC = () => {
                     }`}
                   >
                     <Sparkles className="w-3.5 h-3.5" />
-                    <span>Match Analysis</span>
+                    <span>Match</span>
                   </button>
                   <button
                     type="button"
@@ -799,7 +799,7 @@ export const JobsPage: React.FC = () => {
                     }`}
                   >
                     <TrendingUp className="w-3.5 h-3.5" />
-                    <span>Skill Gap Analysis</span>
+                    <span>Skill Gaps</span>
                     {activeGaps && (activeGaps.missing_required_skills.length > 0 || activeGaps.experience_gap.experience_gap > 0) && (
                       <span className="ml-1 px-1.5 py-0.2 bg-rose-100 text-rose-700 rounded-full text-[10px] font-bold">
                         {activeGaps.missing_required_skills.length + (activeGaps.experience_gap.experience_gap > 0 ? 1 : 0)}
@@ -816,7 +816,7 @@ export const JobsPage: React.FC = () => {
                     }`}
                   >
                     <Sliders className="w-3.5 h-3.5" />
-                    <span>What-If Simulator</span>
+                    <span>What-If</span>
                     {(simAddedSkills.length + simModifiedSkills.length + simRemovedSkills.length > 0 || (typeof simExperienceYears === 'number' && activeGaps && simExperienceYears !== activeGaps.experience_gap.candidate_experience_years)) && (
                       <span className="ml-1 w-2 h-2 rounded-full bg-amber-500"></span>
                     )}
@@ -854,7 +854,7 @@ export const JobsPage: React.FC = () => {
                     }`}
                   >
                     <FileText className="w-3.5 h-3.5" />
-                    <span>Job Specifications</span>
+                    <span>Job Details</span>
                   </button>
                 </div>
               </div>
@@ -997,19 +997,19 @@ export const JobsPage: React.FC = () => {
                         <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-xl p-5 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
                           <div>
                             <span className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">
-                              Deterministic Match Score
+                              Match Score
                             </span>
                             <div className="flex items-baseline space-x-3 mt-1">
                               <span className="text-4xl font-extrabold tracking-tight">
                                 {activeMatch.overall_score.toFixed(1)}%
                               </span>
                               <span className="text-xs font-semibold text-emerald-400 bg-emerald-950/80 border border-emerald-800 px-2 py-0.5 rounded">
-                                {activeMatch.overall_score >= 85
+                                {activeMatch.overall_score >= 80
                                   ? 'Strong Match'
-                                  : activeMatch.overall_score >= 70
+                                  : activeMatch.overall_score >= 60
                                   ? 'Good Match'
-                                  : activeMatch.overall_score >= 50
-                                  ? 'Moderate Match'
+                                  : activeMatch.overall_score >= 40
+                                  ? 'Building Match'
                                   : 'Low Match'}
                               </span>
                             </div>
@@ -1031,7 +1031,7 @@ export const JobsPage: React.FC = () => {
                         {/* Dimensional Breakdown Cards */}
                         <div>
                           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
-                            Dimensional Score Breakdown
+                            Match Breakdown
                           </h3>
                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                             {/* Required Skills */}
@@ -1089,7 +1089,7 @@ export const JobsPage: React.FC = () => {
                           <div>
                             <h4 className="text-xs font-bold text-emerald-800 flex items-center space-x-1.5 mb-2.5">
                               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                              <span>Direct Matched Skills ({activeMatch.matched_skills.length})</span>
+                              <span>Why you match: Matched Skills ({activeMatch.matched_skills.length})</span>
                             </h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                               {activeMatch.matched_skills.map((sk, idx) => (
@@ -1117,7 +1117,7 @@ export const JobsPage: React.FC = () => {
                           <div>
                             <h4 className="text-xs font-bold text-sky-800 flex items-center space-x-1.5 mb-2.5">
                               <Sparkles className="w-4 h-4 text-sky-600" />
-                              <span>Transferable Related Skills Credit ({activeMatch.partial_skills.length})</span>
+                              <span>Related Skills Credit ({activeMatch.partial_skills.length})</span>
                             </h4>
                             <div className="space-y-2">
                               {activeMatch.partial_skills.map((psk, idx) => (
@@ -1130,7 +1130,7 @@ export const JobsPage: React.FC = () => {
                                     <span className="text-slate-400 mx-1.5">→</span>
                                     <span className="font-semibold text-sky-800">{psk.job_skill_name}</span>
                                     <p className="text-[10px] text-slate-500 mt-0.5">
-                                      Explicit taxonomy relationship similarity weight: {(psk.similarity_weight * 100).toFixed(0)}%
+                                      Taxonomy relationship similarity: {(psk.similarity_weight * 100).toFixed(0)}%
                                     </p>
                                   </div>
                                   <span className="text-[10px] font-bold text-sky-800 bg-sky-100 px-2 py-0.5 rounded">
@@ -1147,7 +1147,7 @@ export const JobsPage: React.FC = () => {
                           <div>
                             <h4 className="text-xs font-bold text-rose-800 flex items-center space-x-1.5 mb-2.5">
                               <XCircle className="w-4 h-4 text-rose-600" />
-                              <span>Missing Required Skills ({activeMatch.missing_required_skills.length})</span>
+                              <span>What is missing: Required Skills ({activeMatch.missing_required_skills.length})</span>
                             </h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                               {activeMatch.missing_required_skills.map((msk, idx) => (
@@ -1191,7 +1191,7 @@ export const JobsPage: React.FC = () => {
                             className="py-2 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-lg transition flex items-center justify-center space-x-1.5"
                           >
                             <TrendingUp className="w-3.5 h-3.5 text-sky-600" />
-                            <span>Skill Gap Analysis</span>
+                            <span>Skill Gaps</span>
                           </button>
                           <button
                             type="button"
@@ -1199,7 +1199,7 @@ export const JobsPage: React.FC = () => {
                             className="py-2 px-3 bg-sky-50 hover:bg-sky-100 text-sky-800 font-semibold text-xs rounded-lg transition border border-sky-200 flex items-center justify-center space-x-1.5"
                           >
                             <Sliders className="w-3.5 h-3.5 text-sky-600" />
-                            <span>What-If Simulator</span>
+                            <span>What-If</span>
                           </button>
                           <button
                             type="button"

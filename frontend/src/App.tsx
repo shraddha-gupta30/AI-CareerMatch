@@ -14,13 +14,13 @@ import { HealthStatusCard } from './features/health/HealthStatusCard';
 import { Layers, Code2, Lock, CheckCircle, Loader2 } from 'lucide-react';
 
 const PIPELINE_STEPS = [
-  { step: '1', title: 'Candidate Profile', desc: 'Career goals & technical background', phase: 'Phase 3 (Active)' },
-  { step: '2', title: 'Resume PDF Parser', desc: 'Structured extraction & staging review', phase: 'Phase 4 (Active)' },
-  { step: '3', title: 'Curated Catalog', desc: '42 curated industry job positions', phase: 'Phase 5 (Active)' },
-  { step: '4', title: 'Deterministic Match', desc: 'Proportional weight scoring engine', phase: 'Phase 5 (Active)' },
-  { step: '5', title: 'Career Simulator', desc: 'What-If score progression', phase: 'Phase 6 (Active)' },
-  { step: '6', title: 'Dynamic Roadmap', desc: 'Prerequisite DAG learning path', phase: 'Phase 7 (Active)' },
-  { step: '7', title: 'Executive Dashboard', desc: 'Integrated candidate command center', phase: 'Phase 8 (Active)' },
+  { step: '1', title: 'Candidate Profile', desc: 'Career goals & technical background', phase: 'Profile' },
+  { step: '2', title: 'Resume PDF Parser', desc: 'Structured extraction & skills mapping', phase: 'Resume' },
+  { step: '3', title: 'Curated Catalog', desc: '42 curated industry job positions', phase: 'Catalog' },
+  { step: '4', title: 'Match Engine', desc: 'Transparent, skill-based score calculation', phase: 'Matching' },
+  { step: '5', title: 'Career Simulator', desc: 'Interactive score projection scenarios', phase: 'Simulator' },
+  { step: '6', title: 'Career Roadmap', desc: 'Prerequisite-aware milestone plan', phase: 'Roadmap' },
+  { step: '7', title: 'Dashboard', desc: 'Integrated candidate command center', phase: 'Dashboard' },
 ];
 
 export const App: React.FC = () => {
@@ -103,7 +103,7 @@ export const App: React.FC = () => {
                     <Layers className="w-5 h-5 text-indigo-600" />
                     <h3 className="text-base font-semibold text-slate-800">Core Product Pipeline</h3>
                   </div>
-                  <span className="text-xs font-medium text-slate-500">Phase Status</span>
+                  <span className="text-xs font-medium text-slate-500">System Modules</span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

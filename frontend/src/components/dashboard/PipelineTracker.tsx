@@ -53,8 +53,8 @@ export const PipelineTracker: React.FC<PipelineTrackerProps> = ({
     },
     {
       id: 3,
-      title: 'Job Match Discovery',
-      desc: 'Explore 42 curated roles with transparent scores',
+      title: 'Job Matches',
+      desc: 'Explore curated positions with transparent match scores',
       icon: Briefcase,
       isCompleted: stages.hasProfile,
       isInProgress: stages.hasResume && !stages.hasViewedJobs,
@@ -63,18 +63,18 @@ export const PipelineTracker: React.FC<PipelineTrackerProps> = ({
     },
     {
       id: 4,
-      title: 'What-If Simulator',
-      desc: 'Simulate score changes by adding missing skills',
+      title: 'Career Simulator',
+      desc: 'Simulate how new skills improve your match score',
       icon: Sliders,
       isCompleted: stages.hasSimulated,
       isInProgress: stages.hasProfile && !stages.hasSimulated,
       action: () => onNavigateToJobs('simulator'),
-      actionText: 'Launch Simulator',
+      actionText: 'Try Scenarios',
     },
     {
       id: 5,
       title: 'Career Roadmap',
-      desc: 'Follow prerequisite-aware milestones to role mastery',
+      desc: 'Follow a sequenced learning plan to reach your target role',
       icon: Compass,
       isCompleted: stages.hasRoadmap,
       isInProgress: stages.hasProfile && !stages.hasRoadmap,
@@ -91,13 +91,13 @@ export const PipelineTracker: React.FC<PipelineTrackerProps> = ({
       <div className="flex items-center justify-between mb-4">
         <div>
           <h3 className="text-sm font-bold text-slate-900 tracking-tight">
-            Career Engine Pipeline
+            Career Readiness Journey
           </h3>
           <p className="text-xs text-slate-500 mt-0.5">
-            5-stage journey from resume to job readiness
+            Key steps from resume to role readiness
           </p>
         </div>
-        <span className="text-xs font-bold text-sky-700 bg-sky-50 border border-sky-200 px-2.5 py-1 rounded-full">
+        <span className="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-full">
           {completedCount} / {steps.length} Completed
         </span>
       </div>

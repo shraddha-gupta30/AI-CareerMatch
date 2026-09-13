@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { useNavigationStore } from '../../store/navigationStore';
-import { Compass, Sparkles, LogOut } from 'lucide-react';
+import { Compass, LogOut } from 'lucide-react';
 
 export const TopBar: React.FC = () => {
   const { isAuthenticated, user, logout } = useAuthStore();
@@ -23,17 +23,10 @@ export const TopBar: React.FC = () => {
         </div>
         <div>
           <span className="text-base font-bold text-slate-900 tracking-tight">AI CareerMatch</span>
-          <span className="ml-2 px-2 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800 rounded-full">
-            Phase 8 Active
-          </span>
         </div>
       </div>
 
       <div className="flex items-center space-x-4">
-        <div className="hidden md:flex items-center space-x-1 text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg">
-          <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-          <span>Local Windows Dev</span>
-        </div>
 
         {isAuthenticated && user ? (
           <div className="flex items-center space-x-3 pl-3 border-l border-slate-200">

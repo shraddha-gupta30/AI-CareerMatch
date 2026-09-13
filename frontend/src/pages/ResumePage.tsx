@@ -343,13 +343,13 @@ export const ResumePage: React.FC = () => {
         <div>
           <div className="inline-flex items-center space-x-2 text-sky-600 bg-sky-50 px-3 py-1 rounded-full text-xs font-semibold mb-2">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Phase 4 • AI Resume Extraction & Taxonomy Matcher</span>
+            <span>AI Resume Extraction</span>
           </div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
-            Resume Upload & Staging Review
+            Resume
           </h1>
           <p className="text-sm text-slate-600 mt-1">
-            Upload your PDF resume to extract structured skills, work history, and education. Review and confirm changes before applying them to your Career Profile.
+            Review the skills and experience AI extracted from your resume.
           </p>
         </div>
       </div>
@@ -571,7 +571,7 @@ export const ResumePage: React.FC = () => {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                   <div>
                     <h2 className="text-base font-semibold text-slate-900">
-                      Staging Review & Normalization
+                      Review extracted information
                     </h2>
                     <p className="text-xs text-slate-500 mt-0.5">
                       Verify and adjust extracted candidate attributes before applying to your live Career Profile.

@@ -178,56 +178,49 @@ export const DashboardPage: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      {/* 1. Executive Hero Welcome Banner */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-800">
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-semibold mb-3 border border-sky-400/30">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Candidate Career Command Center</span>
-            </div>
-
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-              Welcome back, {user?.full_name || 'Candidate'}
-            </h1>
-
-            <p className="text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
-              {profile?.target_role ? (
-                <>
-                  Tracking career readiness for{' '}
-                  <span className="text-sky-300 font-semibold">{profile.target_role}</span>
-                  {profile.target_location ? ` in ${profile.target_location}` : ''}.
-                </>
-              ) : (
-                'Set your career target and upload your resume to unlock deterministic job matching.'
+      {/* 1. Header Banner */}
+      <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+            Welcome back, {user?.full_name || 'Candidate'}
+          </h1>
+          <p className="text-sm text-slate-600 mt-1.5 leading-relaxed">
+            Your personalized path to becoming job-ready.
+          </p>
+          {profile?.target_role && (
+            <div className="flex flex-wrap items-center gap-2 mt-3 text-xs text-slate-500">
+              <span className="font-semibold text-slate-800 bg-slate-100 px-3 py-1 rounded-lg">
+                Target: {profile.target_role}
+              </span>
+              {profile.target_location && (
+                <span className="flex items-center space-x-1 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 text-slate-600">
+                  <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                  <span>{profile.target_location}</span>
+                </span>
               )}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={() => navigate('/jobs')}
-              className="inline-flex items-center space-x-2 px-4 py-2.5 bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white rounded-xl text-xs font-semibold shadow-sm transition"
-            >
-              <Briefcase className="w-4 h-4" />
-              <span>Explore Catalog ({totalJobs})</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => navigate('/resume')}
-              className="inline-flex items-center space-x-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 active:bg-white/25 border border-white/20 text-white rounded-xl text-xs font-semibold transition"
-            >
-              <FileText className="w-4 h-4" />
-              <span>Resume Review</span>
-            </button>
-          </div>
+            </div>
+          )}
         </div>
 
-        {/* Decorative subtle background accents */}
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 -mb-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => navigate('/jobs')}
+            className="inline-flex items-center space-x-2 px-5 py-2.5 bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white rounded-xl text-xs font-semibold shadow-sm transition"
+          >
+            <Briefcase className="w-4 h-4" />
+            <span>Explore Jobs</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate('/resume')}
+            className="inline-flex items-center space-x-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 text-slate-700 border border-slate-200 rounded-xl text-xs font-semibold transition"
+          >
+            <FileText className="w-4 h-4" />
+            <span>Review Resume</span>
+          </button>
+        </div>
       </div>
 
       {/* Error Notice if any */}
@@ -251,14 +244,14 @@ export const DashboardPage: React.FC = () => {
       {/* 2. Key Metrics Row (4 Cards) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <DashboardMetricCard
-          title="Profile Completeness"
+          title="Profile Readiness"
           value={`${profileScore}%`}
           subtitle={profileDetails}
           icon={User}
           iconColor="text-indigo-600"
           iconBg="bg-indigo-50"
           badge={{
-            text: profileScore === 100 ? 'Complete' : 'In Progress',
+            text: profileScore === 100 ? 'Ready' : 'In Progress',
             variant: profileScore === 100 ? 'emerald' : 'sky',
           }}
           progress={{
@@ -271,9 +264,9 @@ export const DashboardPage: React.FC = () => {
         />
 
         <DashboardMetricCard
-          title="Best Match Score"
+          title="Best Job Match"
           value={bestMatchScore}
-          subtitle={bestMatch ? `${bestMatch.title} at ${bestMatch.company}` : 'Evaluate jobs catalog'}
+          subtitle={bestMatch ? `${bestMatch.title} • ${bestMatch.company}` : 'Browse curated jobs'}
           icon={TrendingUp}
           iconColor="text-emerald-600"
           iconBg="bg-emerald-50"
@@ -289,16 +282,16 @@ export const DashboardPage: React.FC = () => {
               navigate('/jobs');
             }
           }}
-          ctaText={bestMatch ? 'Inspect Match Breakdown' : 'Browse Catalog'}
+          ctaText={bestMatch ? 'View Match Breakdown' : 'Browse Catalog'}
         />
 
         <DashboardMetricCard
           title="Career Roadmap"
-          value={primaryRoadmap ? `${roadmapPercentage.toFixed(0)}%` : 'None'}
+          value={primaryRoadmap ? `${roadmapPercentage.toFixed(0)}%` : 'Not Started'}
           subtitle={
             primaryRoadmap
               ? `${roadmapCompletedItems} of ${roadmapTotalItems} milestones reached`
-              : 'Generate from top job gap'
+              : 'Create your learning plan'
           }
           icon={Compass}
           iconColor="text-sky-600"
@@ -321,7 +314,7 @@ export const DashboardPage: React.FC = () => {
         />
 
         <DashboardMetricCard
-          title="Saved Positions"
+          title="Saved Jobs"
           value={savedJobs.length}
           subtitle={`${totalJobs} curated opportunities available`}
           icon={Bookmark}
@@ -333,7 +326,112 @@ export const DashboardPage: React.FC = () => {
         />
       </div>
 
-      {/* 3. Main Command Center Grid */}
+      {/* 3. Your Next Steps Section */}
+      <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h3 className="text-sm font-bold text-slate-900 tracking-tight">
+              Your Next Steps
+            </h3>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Recommended actions to accelerate your job readiness
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {/* Step A: Profile / Resume */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between">
+            <div>
+              <span className="text-[10px] font-bold text-sky-600 uppercase tracking-wider">
+                Step 1 • Profile
+              </span>
+              <h4 className="text-xs font-bold text-slate-900 mt-1">
+                {resumes.length === 0 ? 'Upload Your Resume' : 'Keep Profile Updated'}
+              </h4>
+              <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                {resumes.length === 0
+                  ? 'Extract skills and experience from your resume PDF to unlock accurate matching.'
+                  : 'Review verified skills, education, and target location preferences.'}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => navigate(resumes.length === 0 ? '/resume' : '/profile')}
+              className="mt-4 inline-flex items-center space-x-1.5 text-xs font-semibold text-sky-600 hover:text-sky-800 self-start"
+            >
+              <span>{resumes.length === 0 ? 'Upload Resume' : 'Edit Profile'}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Step B: Explore Matches */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between">
+            <div>
+              <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider">
+                Step 2 • Matches
+              </span>
+              <h4 className="text-xs font-bold text-slate-900 mt-1">
+                {bestMatch ? `Explore ${bestMatch.title}` : 'Discover Matched Roles'}
+              </h4>
+              <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                {bestMatch
+                  ? `You have a ${bestMatch.match_score?.toFixed(0)}% match with ${bestMatch.company}. Inspect skill overlaps and requirements.`
+                  : 'Explore open positions and see which roles fit your current background best.'}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                if (bestMatch) {
+                  navigateToJob(bestMatch.id, 'match');
+                } else {
+                  navigate('/jobs');
+                }
+              }}
+              className="mt-4 inline-flex items-center space-x-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800 self-start"
+            >
+              <span>{bestMatch ? 'Inspect Match' : 'View Jobs'}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Step C: Roadmap & Growth */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs flex flex-col justify-between">
+            <div>
+              <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">
+                Step 3 • Growth
+              </span>
+              <h4 className="text-xs font-bold text-slate-900 mt-1">
+                {primaryRoadmap ? 'Continue Preparation Plan' : 'Generate Career Roadmap'}
+              </h4>
+              <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                {primaryRoadmap
+                  ? `Track remaining milestones toward ${primaryRoadmap.target_role} with estimated hours and projects.`
+                  : 'Turn identified skill gaps into an actionable, step-by-step learning roadmap.'}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                if (primaryRoadmap && primaryRoadmap.target_job_id) {
+                  navigateToJob(primaryRoadmap.target_job_id, 'roadmap');
+                } else if (bestMatch) {
+                  navigateToJob(bestMatch.id, 'roadmap');
+                } else {
+                  navigate('/jobs');
+                }
+              }}
+              className="mt-4 inline-flex items-center space-x-1.5 text-xs font-semibold text-emerald-600 hover:text-emerald-800 self-start"
+            >
+              <span>{primaryRoadmap ? 'Open Roadmap' : 'Create Roadmap'}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. Main Command Center Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Roadmap Spotlight + Top Matched Jobs (8 cols) */}
         <div className="lg:col-span-8 space-y-8">
@@ -349,7 +447,7 @@ export const DashboardPage: React.FC = () => {
                     Active Career Roadmap
                   </h3>
                   <p className="text-xs text-slate-500">
-                    DAG-sequenced learning path based on your real skill gaps
+                    Step-by-step preparation plan tailored to your skill gaps
                   </p>
                 </div>
               </div>
@@ -457,7 +555,7 @@ export const DashboardPage: React.FC = () => {
                   Top Recommended Matches
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Calculated with 100% deterministic mathematical scoring
+                  Roles evaluated against your verified skills and background
                 </p>
               </div>
 
@@ -674,17 +772,17 @@ export const DashboardPage: React.FC = () => {
             )}
           </div>
 
-          {/* Deterministic Architectural Integrity Card */}
+          {/* Transparent Matching Card */}
           <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white shadow-sm border border-slate-800">
             <div className="flex items-center space-x-2 text-sky-400 text-xs font-bold uppercase tracking-wider mb-2">
               <ShieldCheck className="w-4 h-4" />
-              <span>Deterministic Core</span>
+              <span>Transparent Matching</span>
             </div>
             <h4 className="text-xs font-bold text-white mb-1">
-              100% Explainable Math
+              Objective & Explainable
             </h4>
             <p className="text-[11px] text-slate-300 leading-relaxed">
-              Match scores are computed deterministically using proportional weights across required and preferred skills, taxonomy relationships, and experience deltas. Zero hallucinated scoring.
+              Every score reflects your direct skill alignment, experience level, and educational background without black-box guesswork or inflated numbers.
             </p>
           </div>
         </div>

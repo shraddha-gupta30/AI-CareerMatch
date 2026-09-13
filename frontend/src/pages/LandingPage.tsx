@@ -66,7 +66,7 @@ export const LandingPage: React.FC = () => {
         </h1>
 
         <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          AI CareerMatch combines mathematical, deterministic skill evaluation with targeted AI extraction to give you 100% transparent job alignment scores and structured prerequisite roadmaps.
+          AI CareerMatch combines objective, verified skill evaluation with targeted AI extraction to give you transparent job alignment scores and structured prerequisite roadmaps.
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -75,7 +75,7 @@ export const LandingPage: React.FC = () => {
               onClick={() => navigate('/dashboard')}
               className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 text-sm font-semibold rounded-xl bg-sky-600 text-white hover:bg-sky-700 shadow-sm transition"
             >
-              <span>Go to Command Center ({user?.full_name})</span>
+              <span>Go to Dashboard ({user?.full_name})</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           ) : (
@@ -104,9 +104,9 @@ export const LandingPage: React.FC = () => {
           <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-4">
             <Cpu className="w-5 h-5" />
           </div>
-          <h3 className="text-base font-semibold text-slate-900 mb-2">Deterministic Scoring</h3>
+          <h3 className="text-base font-semibold text-slate-900 mb-2">Transparent Matching</h3>
           <p className="text-xs text-slate-600 leading-relaxed">
-            Mathematical matching algorithm with dynamic proportional weight redistribution. Every score is explainable down to individual skill proficiencies.
+            Objective matching algorithm with dynamic proportional weight calculation. Every score is explainable down to individual skill proficiencies.
           </p>
         </div>
 
@@ -133,7 +133,7 @@ export const LandingPage: React.FC = () => {
 
       {/* Footer */}
       <footer className="mt-auto py-8 border-t border-slate-200 bg-white text-center text-xs text-slate-500">
-        <p>AI CareerMatch &copy; 2026 — Local Autonomous Architecture</p>
+        <p>AI CareerMatch &copy; 2026 — Intelligent Career Navigation Platform</p>
       </footer>
     </div>
   );

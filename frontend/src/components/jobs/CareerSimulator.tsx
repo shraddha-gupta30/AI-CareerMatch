@@ -145,11 +145,11 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
         <div className="flex items-center space-x-2">
           <Sliders className="w-4 h-4 text-sky-400" />
           <h3 className="text-sm font-bold uppercase tracking-wider text-sky-300">
-            What-If Career Simulator
+            Career Simulator
           </h3>
         </div>
         <p className="text-xs text-slate-200 mt-1.5 max-w-xl leading-relaxed">
-          Try temporary changes to see how your match score could improve. These changes do not modify your profile.
+          Try a scenario to see how new skills and experience would change your match score. These changes are simulated and will not affect your profile.
         </p>
         <div className="flex items-center space-x-2 mt-3 text-[11px] text-slate-400">
           <span>Target role:</span>
@@ -174,7 +174,7 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
       <div className="space-y-5 bg-slate-50 p-5 rounded-xl border border-slate-200">
         <div className="flex items-center justify-between border-b border-slate-200 pb-3">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700">
-            Scenario Modifications ({activeChangesCount} staged)
+            Try a Scenario ({activeChangesCount} staged)
           </h4>
           {activeChangesCount > 0 && (
             <button
@@ -191,7 +191,7 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
         {/* A. Add Known Skill */}
         <div>
           <label className="block text-xs font-bold text-slate-800 mb-1.5">
-            A. Add a Known Skill
+            Add a Skill
           </label>
           <form onSubmit={handleAddSubmit} className="flex flex-col sm:flex-row gap-2">
             <select
@@ -269,7 +269,7 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
         {existingSkills.length > 0 && (
           <div>
             <label className="block text-xs font-bold text-slate-800 mb-1.5">
-              B. Modify Proficiency of an Existing Skill
+              Improve a Skill
             </label>
             <form onSubmit={handleModSubmit} className="flex flex-col sm:flex-row gap-2">
               <select
@@ -336,7 +336,7 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
         {existingSkills.length > 0 && (
           <div>
             <label className="block text-xs font-bold text-slate-800 mb-1">
-              C. Temporarily Remove an Existing Skill
+              Remove a Skill (Optional)
             </label>
             <p className="text-[11px] text-slate-500 mb-2">
               Click any skill badge to toggle removing it from this simulation scenario:
@@ -368,7 +368,7 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
         <div>
           <div className="flex items-center justify-between mb-1.5">
             <label htmlFor="sim-exp-input" className="text-xs font-bold text-slate-800">
-              D. Temporarily Change Work Experience (Years)
+              Adjust Experience
             </label>
             <span className="text-[11px] text-slate-500">
               Profile baseline: <strong className="text-slate-700">{candidateExperienceYears.toFixed(1)} yrs</strong>
@@ -408,12 +408,12 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
             {isSimulating ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Evaluating In-Memory Simulation...</span>
+                <span>Calculating Projected Match...</span>
               </>
             ) : (
               <>
                 <Sparkles className="w-4 h-4" />
-                <span>Simulate Match</span>
+                <span>See Projected Match</span>
               </>
             )}
           </button>
@@ -436,10 +436,10 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
           <div className="flex items-center justify-between">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center space-x-1.5">
               <Sparkles className="w-4 h-4 text-sky-600" />
-              <span>Simulation Results</span>
+              <span>Projected Match</span>
             </h4>
             <span className="text-[11px] text-slate-500">
-              Deterministic engine evaluation
+              Based on your simulated scenario
             </span>
           </div>
 
@@ -448,7 +448,7 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
             {/* Current Match */}
             <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-center">
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                CURRENT MATCH
+                Current Match
               </p>
               <p className="text-2xl font-extrabold text-slate-800 mt-1">
                 {simResult.current_score.toFixed(1)}%
@@ -459,7 +459,7 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
             {/* Simulated Match */}
             <div className="p-3.5 bg-sky-50 rounded-xl border border-sky-200 text-center">
               <p className="text-[10px] font-bold text-sky-700 uppercase tracking-wider">
-                SIMULATED MATCH
+                Projected Match
               </p>
               <p className="text-2xl font-extrabold text-sky-900 mt-1">
                 {simResult.simulated_score.toFixed(1)}%
@@ -478,14 +478,14 @@ export const CareerSimulator: React.FC<CareerSimulatorProps> = ({
               }`}
             >
               <p className="text-[10px] font-bold uppercase tracking-wider opacity-80">
-                SCORE CHANGE
+                Projected Change
               </p>
               <div className="flex items-center justify-center space-x-1 mt-1">
                 {simResult.score_delta > 0 && <TrendingUp className="w-5 h-5 text-emerald-600" />}
                 {simResult.score_delta < 0 && <TrendingDown className="w-5 h-5 text-rose-600" />}
                 <p className="text-2xl font-extrabold">
                   {simResult.score_delta > 0 ? '+' : ''}
-                  {simResult.score_delta.toFixed(1)} pts
+                  {simResult.score_delta.toFixed(1)}%
                 </p>
               </div>
               <p className="text-[10px] opacity-80 mt-0.5">

@@ -33,25 +33,25 @@ const STAGE_METADATA: Record<
   { title: string; subtitle: string; badge: string; color: string }
 > = {
   1: {
-    title: 'Stage 1: Core Prerequisites & Must-Haves',
+    title: 'Stage 1: Core Prerequisites & Essentials',
     subtitle: 'Foundational prerequisites and critical role requirements needed on day one.',
-    badge: 'Foundational',
+    badge: 'Foundations',
     color: 'border-rose-300 bg-rose-50/40 text-rose-800',
   },
   2: {
-    title: 'Stage 2: Secondary & Knowledge Bridging',
+    title: 'Stage 2: Skill Expansion & Bridging',
     subtitle: 'Transferable skill deltas and core technical specializations.',
-    badge: 'Specialization',
+    badge: 'Expansion',
     color: 'border-amber-300 bg-amber-50/40 text-amber-800',
   },
   3: {
-    title: 'Stage 3: Competitive Advantage (Preferred Skills)',
+    title: 'Stage 3: Competitive Advantage',
     subtitle: 'Differentiating competencies to exceed standard job expectations.',
     badge: 'Competitive Edge',
     color: 'border-sky-300 bg-sky-50/40 text-sky-800',
   },
   4: {
-    title: 'Stage 4: Capstone Experience & Credentials',
+    title: 'Stage 4: Portfolio Deliverables & Capstone',
     subtitle: 'Production portfolio deliverables and education credential alignment.',
     badge: 'Capstone Milestones',
     color: 'border-emerald-300 bg-emerald-50/40 text-emerald-800',
@@ -245,7 +245,7 @@ export const CareerRoadmap: React.FC<CareerRoadmapProps> = ({
             const stageMeta = STAGE_METADATA[stageNum] || {
               title: `Stage ${stageNum}`,
               subtitle: 'Structured progression milestone',
-              badge: `Phase ${stageNum}`,
+              badge: `Stage ${stageNum}`,
               color: 'border-slate-300 bg-slate-50 text-slate-800',
             };
             const stageItems = filteredItems.filter((it) => it.stage_phase === stageNum);

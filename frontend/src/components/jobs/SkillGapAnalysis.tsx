@@ -176,7 +176,7 @@ export const SkillGapAnalysis: React.FC<SkillGapAnalysisProps> = ({
       <div>
         <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center space-x-1.5">
           <Clock className="w-3.5 h-3.5 text-sky-600" />
-          <span>Experience Gap Analysis</span>
+          <span>Experience gap</span>
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
@@ -237,7 +237,7 @@ export const SkillGapAnalysis: React.FC<SkillGapAnalysisProps> = ({
       <div>
         <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center space-x-1.5">
           <GraduationCap className="w-3.5 h-3.5 text-sky-600" />
-          <span>Education Compatibility</span>
+          <span>Education compatibility</span>
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
@@ -305,7 +305,7 @@ export const SkillGapAnalysis: React.FC<SkillGapAnalysisProps> = ({
           <div className="mb-4">
             <h5 className="text-xs font-bold text-rose-800 flex items-center space-x-1.5 mb-2">
               <XCircle className="w-3.5 h-3.5 text-rose-600" />
-              <span>Missing Required Skills ({missing_required_skills.length})</span>
+              <span>Skills to learn: Required ({missing_required_skills.length})</span>
             </h5>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {missing_required_skills.map((ms, idx) => (
@@ -342,7 +342,7 @@ export const SkillGapAnalysis: React.FC<SkillGapAnalysisProps> = ({
           <div className="mb-4">
             <h5 className="text-xs font-bold text-sky-800 flex items-center space-x-1.5 mb-2">
               <Sparkles className="w-3.5 h-3.5 text-sky-600" />
-              <span>Partial / Transferable Required Skills ({partial_required_skills.length})</span>
+              <span>Skills to strengthen: Partial / Transferable ({partial_required_skills.length})</span>
             </h5>
             <div className="space-y-2">
               {partial_required_skills.map((ps, idx) => (
@@ -374,7 +374,7 @@ export const SkillGapAnalysis: React.FC<SkillGapAnalysisProps> = ({
           <div>
             <h5 className="text-xs font-bold text-emerald-800 flex items-center space-x-1.5 mb-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Matched Required Skills ({matched_required_skills.length})</span>
+              <span>Skills you already have: Matched Required ({matched_required_skills.length})</span>
             </h5>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {matched_required_skills.map((ms, idx) => (
@@ -429,75 +429,93 @@ export const SkillGapAnalysis: React.FC<SkillGapAnalysisProps> = ({
           <div className="space-y-3">
             {/* Missing Preferred */}
             {missing_preferred_skills.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {missing_preferred_skills.map((ps, idx) => (
-                  <div
-                    key={idx}
-                    className="p-2.5 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-between text-xs"
-                  >
-                    <div>
-                      <span className="font-semibold text-slate-700">{ps.name}</span>
-                      <p className="text-[10px] text-slate-500 capitalize">
-                        Target: {ps.required_proficiency}
-                      </p>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => onSimulateAddSkill(ps.name, ps.required_proficiency)}
-                      className="px-2 py-0.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded text-[10px] font-semibold transition"
+              <div>
+                <h5 className="text-xs font-bold text-slate-700 flex items-center space-x-1.5 mb-2">
+                  <XCircle className="w-3.5 h-3.5 text-slate-500" />
+                  <span>Skills to learn: Preferred ({missing_preferred_skills.length})</span>
+                </h5>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {missing_preferred_skills.map((ps, idx) => (
+                    <div
+                      key={idx}
+                      className="p-2.5 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-between text-xs"
                     >
-                      + Simulate
-                    </button>
-                  </div>
-                ))}
+                      <div>
+                        <span className="font-semibold text-slate-700">{ps.name}</span>
+                        <p className="text-[10px] text-slate-500 capitalize">
+                          Target: {ps.required_proficiency}
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onSimulateAddSkill(ps.name, ps.required_proficiency)}
+                        className="px-2 py-0.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded text-[10px] font-semibold transition"
+                      >
+                        + Simulate
+                      </button>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 
             {/* Partial Preferred */}
             {partial_preferred_skills.length > 0 && (
-              <div className="space-y-2">
-                {partial_preferred_skills.map((ps, idx) => (
-                  <div
-                    key={idx}
-                    className="p-2.5 rounded-lg border border-purple-200 bg-purple-50/40 flex items-center justify-between text-xs"
-                  >
-                    <div>
-                      <div className="flex items-center space-x-1.5 font-semibold text-slate-900">
-                        <span>{ps.candidate_skill_name}</span>
-                        <span className="text-slate-400">→</span>
-                        <span className="text-purple-800 font-bold">{ps.job_skill_name}</span>
+              <div>
+                <h5 className="text-xs font-bold text-purple-800 flex items-center space-x-1.5 mb-2">
+                  <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                  <span>Skills to strengthen: Preferred ({partial_preferred_skills.length})</span>
+                </h5>
+                <div className="space-y-2">
+                  {partial_preferred_skills.map((ps, idx) => (
+                    <div
+                      key={idx}
+                      className="p-2.5 rounded-lg border border-purple-200 bg-purple-50/40 flex items-center justify-between text-xs"
+                    >
+                      <div>
+                        <div className="flex items-center space-x-1.5 font-semibold text-slate-900">
+                          <span>{ps.candidate_skill_name}</span>
+                          <span className="text-slate-400">→</span>
+                          <span className="text-purple-800 font-bold">{ps.job_skill_name}</span>
+                        </div>
+                        <p className="text-[10px] text-slate-500 mt-0.5">
+                          Related skill: {(ps.similarity_weight * 100).toFixed(0)}% related credit
+                        </p>
                       </div>
-                      <p className="text-[10px] text-slate-500 mt-0.5">
-                        Related skill: {(ps.similarity_weight * 100).toFixed(0)}% related credit
-                      </p>
+                      <span className="text-[10px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">
+                        {(ps.credit * 100).toFixed(0)}% Credit
+                      </span>
                     </div>
-                    <span className="text-[10px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">
-                      {(ps.credit * 100).toFixed(0)}% Credit
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
 
             {/* Matched Preferred */}
             {matched_preferred_skills.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {matched_preferred_skills.map((ps, idx) => (
-                  <div
-                    key={idx}
-                    className="p-2.5 rounded-lg border border-purple-200 bg-purple-50/50 flex items-center justify-between text-xs"
-                  >
-                    <div>
-                      <span className="font-semibold text-slate-900">{ps.name}</span>
-                      <p className="text-[10px] text-purple-700 capitalize font-medium">
-                        {ps.candidate_proficiency}
-                      </p>
+              <div>
+                <h5 className="text-xs font-bold text-emerald-800 flex items-center space-x-1.5 mb-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Skills you already have: Preferred ({matched_preferred_skills.length})</span>
+                </h5>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {matched_preferred_skills.map((ps, idx) => (
+                    <div
+                      key={idx}
+                      className="p-2.5 rounded-lg border border-purple-200 bg-purple-50/50 flex items-center justify-between text-xs"
+                    >
+                      <div>
+                        <span className="font-semibold text-slate-900">{ps.name}</span>
+                        <p className="text-[10px] text-purple-700 capitalize font-medium">
+                          {ps.candidate_proficiency}
+                        </p>
+                      </div>
+                      <span className="text-[10px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">
+                        {(ps.credit * 100).toFixed(0)}% Credit
+                      </span>
                     </div>
-                    <span className="text-[10px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">
-                      {(ps.credit * 100).toFixed(0)}% Credit
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
           </div>
