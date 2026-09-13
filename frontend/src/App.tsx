@@ -74,10 +74,10 @@ export const App: React.FC = () => {
     <div className="min-h-screen bg-slate-50 flex flex-col text-slate-900">
       <TopBar />
 
-      <div className="flex flex-1">
+      <div className="flex flex-1 min-w-0">
         <Sidebar />
 
-        <main className="flex-1 p-6 sm:p-8 max-w-6xl overflow-x-hidden">
+        <main className="flex-1 p-3.5 sm:p-6 lg:p-8 max-w-6xl w-full min-w-0 overflow-x-hidden">
           {currentPath === '/dashboard' && <DashboardPage />}
           {currentPath === '/profile' && <ProfilePage />}
           {currentPath === '/resume' && <ResumePage />}

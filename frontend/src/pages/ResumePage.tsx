@@ -337,7 +337,7 @@ export const ResumePage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8 min-w-0 w-full">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -382,9 +382,9 @@ export const ResumePage: React.FC = () => {
       {/* Main Grid: Upload + History / Selected Review */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Upload Zone + Uploaded Resumes */}
-        <div className="lg:col-span-1 space-y-6">
+        <div className="lg:col-span-1 space-y-6 min-w-0 w-full">
           {/* Upload Card */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 sm:p-5 min-w-0">
             <h2 className="text-sm font-semibold text-slate-900 mb-3 flex items-center space-x-2">
               <UploadCloud className="w-4 h-4 text-sky-600" />
               <span>Upload Resume PDF</span>
@@ -445,7 +445,7 @@ export const ResumePage: React.FC = () => {
           </div>
 
           {/* Resumes List Card */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 sm:p-5 min-w-0">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-sm font-semibold text-slate-900 flex items-center space-x-2">
                 <FileText className="w-4 h-4 text-slate-600" />
@@ -531,7 +531,7 @@ export const ResumePage: React.FC = () => {
         </div>
 
         {/* Right Column: Staging Review Editor */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-6 min-w-0 w-full">
           {isLoadingDetail ? (
             <div className="bg-white rounded-xl border border-slate-200 p-12 flex flex-col items-center justify-center space-y-3">
               <Loader2 className="w-8 h-8 text-sky-600 animate-spin" />
@@ -565,9 +565,9 @@ export const ResumePage: React.FC = () => {
               <p className="text-xs">No structured staging draft available for this resume.</p>
             </div>
           ) : (
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden min-w-0">
               {/* Card Header & Tabs */}
-              <div className="border-b border-slate-200 bg-slate-50/70 p-4">
+              <div className="border-b border-slate-200 bg-slate-50/70 p-3.5 sm:p-4 min-w-0">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                   <div>
                     <h2 className="text-base font-semibold text-slate-900">

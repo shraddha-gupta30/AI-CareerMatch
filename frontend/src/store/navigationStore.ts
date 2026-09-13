@@ -14,12 +14,15 @@ interface NavigationState {
   currentPath: string;
   targetJobId: string | null;
   targetTab: 'overview' | 'match' | 'gaps' | 'simulator' | 'roadmap' | null;
+  isMobileMenuOpen: boolean;
   navigate: (path: string) => void;
   navigateToJob: (
     jobId: string,
     tab?: 'overview' | 'match' | 'gaps' | 'simulator' | 'roadmap'
   ) => void;
   clearJobTarget: () => void;
+  setMobileMenuOpen: (open: boolean) => void;
+  toggleMobileMenu: () => void;
 }
 
 function getInitialPath(): string {
@@ -41,7 +44,7 @@ export const useNavigationStore = create<NavigationState>((set) => {
   // Listen to browser forward/backward navigation
   if (typeof window !== 'undefined') {
     window.addEventListener('popstate', () => {
-      set({ currentPath: window.location.pathname });
+      set({ currentPath: window.location.pathname, isMobileMenuOpen: false });
     });
   }
 
@@ -49,11 +52,12 @@ export const useNavigationStore = create<NavigationState>((set) => {
     currentPath: getInitialPath(),
     targetJobId: null,
     targetTab: null,
+    isMobileMenuOpen: false,
     navigate: (path: string) => {
       if (typeof window !== 'undefined' && window.location.pathname !== path) {
         window.history.pushState({}, '', path);
       }
-      set({ currentPath: path });
+      set({ currentPath: path, isMobileMenuOpen: false });
     },
     navigateToJob: (jobId: string, tab = 'match') => {
       if (typeof window !== 'undefined' && window.location.pathname !== '/jobs') {
@@ -63,10 +67,17 @@ export const useNavigationStore = create<NavigationState>((set) => {
         currentPath: '/jobs',
         targetJobId: jobId,
         targetTab: tab,
+        isMobileMenuOpen: false,
       });
     },
     clearJobTarget: () => {
       set({ targetJobId: null, targetTab: null });
+    },
+    setMobileMenuOpen: (open: boolean) => {
+      set({ isMobileMenuOpen: open });
+    },
+    toggleMobileMenu: () => {
+      set((state) => ({ isMobileMenuOpen: !state.isMobileMenuOpen }));
     },
   };
 });

@@ -44,15 +44,15 @@ export const DashboardMetricCard: React.FC<DashboardMetricCardProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between transition-all duration-200 ${
+      className={`bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm flex flex-col justify-between transition-all duration-200 min-w-0 max-w-full overflow-hidden ${
         onClick
           ? 'cursor-pointer hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5'
           : ''
       }`}
     >
-      <div>
+      <div className="min-w-0">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider truncate">
             {title}
           </span>
           <div
@@ -62,13 +62,13 @@ export const DashboardMetricCard: React.FC<DashboardMetricCardProps> = ({
           </div>
         </div>
 
-        <div className="flex items-baseline space-x-2">
+        <div className="flex flex-wrap items-baseline gap-2">
           <span className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             {value}
           </span>
           {badge && (
             <span
-              className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border ${
+              className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border flex-shrink-0 ${
                 BADGE_STYLES[badge.variant] || BADGE_STYLES.slate
               }`}
             >
@@ -78,7 +78,7 @@ export const DashboardMetricCard: React.FC<DashboardMetricCardProps> = ({
         </div>
 
         {subtitle && (
-          <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">{subtitle}</p>
+          <p className="text-xs text-slate-500 mt-1.5 leading-relaxed break-words">{subtitle}</p>
         )}
       </div>
 

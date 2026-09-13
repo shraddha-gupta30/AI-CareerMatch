@@ -198,24 +198,24 @@ export const ProfilePage: React.FC = () => {
       )}
 
       {/* User Identity Overview Card */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-600 to-indigo-600 text-white font-bold text-xl flex items-center justify-center shadow-md">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-sky-600 to-indigo-600 text-white font-bold text-lg sm:text-xl flex items-center justify-center shadow-md flex-shrink-0">
             {user?.full_name ? user.full_name.charAt(0).toUpperCase() : 'U'}
           </div>
-          <div className="flex-1">
-            <div className="flex items-center space-x-2.5">
-              <h2 className="text-lg font-bold text-slate-900">{user?.full_name}</h2>
-              <span className="px-2 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800 rounded-full">
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 truncate max-w-full">{user?.full_name}</h2>
+              <span className="px-2 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800 rounded-full flex-shrink-0">
                 Active Candidate
               </span>
             </div>
-            <p className="text-xs text-slate-500 font-mono mt-0.5">{user?.email}</p>
+            <p className="text-xs text-slate-500 font-mono mt-0.5 break-all">{user?.email}</p>
           </div>
           {user?.created_at && (
-            <div className="text-left sm:text-right text-[11px] text-slate-400">
+            <div className="text-left sm:text-right text-[11px] text-slate-400 flex-shrink-0">
               <div className="flex items-center space-x-1 sm:justify-end">
-                <Calendar className="w-3.5 h-3.5" />
+                <Calendar className="w-3.5 h-3.5 flex-shrink-0" />
                 <span>Member since {new Date(user.created_at).toLocaleDateString()}</span>
               </div>
               <span className="text-[10px] text-slate-400 block mt-0.5 font-mono">
@@ -238,7 +238,7 @@ export const ProfilePage: React.FC = () => {
 
       {/* Profile Form (Editing State or Empty State) */}
       {!isLoading && isEditing && (
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 min-w-0">
           <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-100">
             <div>
               <h3 className="text-base font-semibold text-slate-900">
@@ -410,64 +410,64 @@ export const ProfilePage: React.FC = () => {
       {!isLoading && !isEditing && profile && (
         <div className="space-y-6">
           {/* Main Targets Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-sm min-w-0">
               <div className="flex items-center space-x-2 text-sky-600 mb-2">
                 <Briefcase className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                   Target Role
                 </span>
               </div>
-              <p className="text-base font-bold text-slate-900">{profile.target_role}</p>
+              <p className="text-base font-bold text-slate-900 break-words">{profile.target_role}</p>
             </div>
 
-            <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+            <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-sm min-w-0">
               <div className="flex items-center space-x-2 text-indigo-600 mb-2">
                 <Clock className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                   Experience
                 </span>
               </div>
-              <p className="text-base font-bold text-slate-900">
+              <p className="text-base font-bold text-slate-900 break-words">
                 {profile.total_experience_years} {profile.total_experience_years === 1 ? 'Year' : 'Years'}
               </p>
             </div>
 
-            <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+            <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-sm min-w-0">
               <div className="flex items-center space-x-2 text-emerald-600 mb-2">
                 <MapPin className="w-4 h-4" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                   Preferences
                 </span>
               </div>
-              <p className="text-sm font-semibold text-slate-800">
+              <p className="text-sm font-semibold text-slate-800 break-words">
                 {profile.target_employment_type || 'Full-time'}
               </p>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-slate-500 mt-0.5 break-words">
                 {profile.target_location || 'Location Not Specified'}
               </p>
             </div>
           </div>
 
           {/* Headline & Summary */}
-          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+          <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-6 shadow-sm min-w-0">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
               Professional Headline
             </h3>
-            <p className="text-sm font-semibold text-slate-800">
+            <p className="text-sm font-semibold text-slate-800 break-words">
               {profile.headline || 'No headline set yet. Click Edit Profile to add one.'}
             </p>
 
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mt-6 mb-2">
               Career Bio & Background
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed whitespace-pre-line">
+            <p className="text-xs text-slate-600 leading-relaxed whitespace-pre-line break-words">
               {profile.bio || 'No career summary provided yet. Introduce your key strengths and goals.'}
             </p>
           </div>
 
           {/* Next Step Card */}
-          <div className="bg-gradient-to-r from-sky-50 to-indigo-50 border border-sky-200/70 rounded-xl p-5">
+          <div className="bg-gradient-to-r from-sky-50 to-indigo-50 border border-sky-200/70 rounded-xl p-4 sm:p-5 min-w-0">
             <div className="flex items-start space-x-3">
               <div className="p-2 bg-sky-100 rounded-lg text-sky-700 mt-0.5">
                 <Sparkles className="w-4 h-4" />

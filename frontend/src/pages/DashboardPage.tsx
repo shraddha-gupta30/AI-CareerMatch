@@ -177,9 +177,9 @@ export const DashboardPage: React.FC = () => {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8 min-w-0 w-full">
       {/* 1. Header Banner */}
-      <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-6 min-w-0">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
             Welcome back, {user?.full_name || 'Candidate'}
@@ -327,7 +327,7 @@ export const DashboardPage: React.FC = () => {
       </div>
 
       {/* 3. Your Next Steps Section */}
-      <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-6">
+      <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 sm:p-6 min-w-0">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h3 className="text-sm font-bold text-slate-900 tracking-tight">
@@ -432,11 +432,11 @@ export const DashboardPage: React.FC = () => {
       </div>
 
       {/* 4. Main Command Center Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
         {/* Left Column: Roadmap Spotlight + Top Matched Jobs (8 cols) */}
-        <div className="lg:col-span-8 space-y-8">
+        <div className="lg:col-span-8 space-y-6 sm:space-y-8 min-w-0 w-full">
           {/* Active Roadmap Spotlight Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 min-w-0">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <div className="flex items-center space-x-2.5">
                 <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center">
@@ -548,7 +548,7 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* Top Job Matches (Deterministic Ranking) */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 min-w-0">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <div>
                 <h3 className="text-sm font-bold text-slate-900">
@@ -657,7 +657,7 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Right Column: Pipeline Stepper + Profile Snapshot (4 cols) */}
-        <div className="lg:col-span-4 space-y-8">
+        <div className="lg:col-span-4 space-y-6 sm:space-y-8 min-w-0 w-full">
           {/* Pipeline Stepper */}
           <PipelineTracker
             stages={pipelineStages}
@@ -672,7 +672,7 @@ export const DashboardPage: React.FC = () => {
           />
 
           {/* Candidate Profile Snapshot */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 min-w-0">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
                 Candidate Snapshot
@@ -773,7 +773,7 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* Transparent Matching Card */}
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white shadow-sm border border-slate-800">
+          <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white shadow-sm border border-slate-800 min-w-0">
             <div className="flex items-center space-x-2 text-sky-400 text-xs font-bold uppercase tracking-wider mb-2">
               <ShieldCheck className="w-4 h-4" />
               <span>Transparent Matching</span>

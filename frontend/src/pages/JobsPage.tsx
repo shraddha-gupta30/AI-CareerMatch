@@ -463,7 +463,7 @@ export const JobsPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-6 max-w-7xl mx-auto min-w-0 w-full">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
@@ -563,7 +563,7 @@ export const JobsPage: React.FC = () => {
       {/* Main Split Layout: Job Cards Column + Detail/Match Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: Job Cards List (5 cols) */}
-        <div className="lg:col-span-5 space-y-4">
+        <div className="lg:col-span-5 space-y-4 min-w-0 w-full">
           <div className="flex items-center justify-between text-xs text-slate-500 px-1">
             <span>Showing {jobs.length} of {totalJobs} jobs</span>
             {savedOnlyFilter && (
@@ -714,7 +714,7 @@ export const JobsPage: React.FC = () => {
         </div>
 
         {/* Right Column: Selected Job Details & Match Breakdown (7 cols) */}
-        <div className="lg:col-span-7 sticky top-4 space-y-4">
+        <div className="lg:col-span-7 lg:sticky lg:top-4 space-y-4 min-w-0 w-full">
           {isLoadingDetail ? (
             <div className="bg-white rounded-xl border border-slate-200 p-12 text-center text-slate-500">
               <Loader2 className="w-8 h-8 text-sky-600 animate-spin mx-auto mb-2" />
@@ -729,18 +729,18 @@ export const JobsPage: React.FC = () => {
               </p>
             </div>
           ) : (
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden min-w-0">
               {/* Job Header Card */}
-              <div className="p-6 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h2 className="text-xl font-bold text-slate-900 tracking-tight">
+              <div className="p-4 sm:p-6 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white min-w-0">
+                <div className="flex items-start justify-between gap-3 sm:gap-4 min-w-0">
+                  <div className="min-w-0 flex-1">
+                    <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight break-words">
                       {activeJobDetail.title}
                     </h2>
-                    <p className="text-sm font-semibold text-sky-700 mt-0.5">
+                    <p className="text-sm font-semibold text-sky-700 mt-0.5 break-words">
                       {activeJobDetail.company}
                     </p>
-                    <div className="flex flex-wrap items-center gap-3 mt-3 text-xs text-slate-600">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-3 text-xs text-slate-600">
                       <span className="flex items-center space-x-1">
                         <MapPin className="w-3.5 h-3.5 text-slate-400" />
                         <span>{activeJobDetail.location}</span>
