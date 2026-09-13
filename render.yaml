@@ -1,0 +1,64 @@
+# ==============================================================================
+# AI CareerMatch — Production Infrastructure Blueprint (Render)
+# Docs: https://render.com/docs/blueprint-spec
+# ==============================================================================
+version: "1"
+
+databases:
+  - name: ai-careermatch-db
+    databaseName: ai_careermatch_db
+    user: postgres
+    plan: free
+    postgresMajorVersion: "16"
+    ipAllowList: [] # Allow internal access from backend web service
+
+services:
+  # ----------------------------------------------------------------------------
+  # 1. FastAPI Backend Web Service
+  # ----------------------------------------------------------------------------
+  - type: web
+    name: ai-careermatch-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    preDeployCommand: alembic upgrade head && python -m app.data.seed_data
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ai-careermatch-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_ORIGINS
+        value: "https://ai-careermatch-frontend.onrender.com,http://localhost:5173"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DB_TIMEOUT
+        value: "15.0"
+      - key: UPLOAD_DIR
+        value: uploads/resumes
+
+  # ----------------------------------------------------------------------------
+  # 2. React / Vite Single Page Application (Static Site)
+  # ----------------------------------------------------------------------------
+  - type: web
+    name: ai-careermatch-frontend
+    runtime: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: "https://ai-careermatch-backend.onrender.com/api/v1"

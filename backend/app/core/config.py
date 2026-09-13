@@ -3,7 +3,8 @@ Application Configuration Module.
 Loads environment variables using Pydantic Settings and pathlib.Path for all filesystem paths.
 """
 from pathlib import Path
-from typing import List
+from typing import List, Union
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -29,13 +30,28 @@ class Settings(BaseSettings):
     DEBUG: bool = True
     PORT: int = 8000
 
-    # CORS Whitelist for Local Development
+    # CORS Whitelist for Local Development & Production
     ALLOWED_ORIGINS: List[str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
     ]
+
+    @field_validator("ALLOWED_ORIGINS", mode="before")
+    @classmethod
+    def parse_allowed_origins(cls, v: Union[List[str], str]) -> List[str]:
+        """Allows ALLOWED_ORIGINS to be configured as a comma-separated list or JSON array in production."""
+        if isinstance(v, str):
+            v = v.strip()
+            if v.startswith("[") and v.endswith("]"):
+                import json
+                try:
+                    return json.loads(v)
+                except Exception:
+                    pass
+            return [origin.strip() for origin in v.split(",") if origin.strip()]
+        return v
 
     # Security (Used in Phase 3+)
     SECRET_KEY: str = "development_only_secret_key_minimum_32_characters_random_string"
@@ -44,6 +60,18 @@ class Settings(BaseSettings):
 
     # Database (Used in Phase 2+)
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/ai_careermatch_db"
+    DB_TIMEOUT: float = 10.0
+
+    @field_validator("DATABASE_URL", mode="before")
+    @classmethod
+    def normalize_database_url(cls, v: str) -> str:
+        """Normalizes postgres:// or postgresql:// to postgresql+asyncpg:// for SQLAlchemy asyncpg engine."""
+        if isinstance(v, str):
+            if v.startswith("postgres://"):
+                return v.replace("postgres://", "postgresql+asyncpg://", 1)
+            if v.startswith("postgresql://") and not v.startswith("postgresql+asyncpg://"):
+                return v.replace("postgresql://", "postgresql+asyncpg://", 1)
+        return v
 
     # AI Integration (Used in Phase 4+ Backend Only)
     GEMINI_API_KEY: str = ""

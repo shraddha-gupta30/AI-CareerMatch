@@ -18,7 +18,10 @@ engine = create_async_engine(
     echo=settings.DEBUG,
     future=True,
     pool_pre_ping=True,
-    connect_args={"timeout": 2.0, "command_timeout": 2.0},
+    connect_args={
+        "timeout": settings.DB_TIMEOUT,
+        "command_timeout": settings.DB_TIMEOUT,
+    },
 )
 
 # Async session factory
@@ -46,13 +49,15 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 async def check_db_connection(timeout: float = 2.0) -> bool:
     """Verifies live database connectivity via a lightweight probe query."""
+    effective_timeout = max(timeout, settings.DB_TIMEOUT)
+
     async def _probe() -> bool:
         async with engine.connect() as conn:
             result = await conn.execute(text("SELECT 1"))
             return result.scalar() == 1
 
     try:
-        return await asyncio.wait_for(_probe(), timeout=timeout)
+        return await asyncio.wait_for(_probe(), timeout=effective_timeout)
     except Exception as exc:
         logger.warning(f"Database connection check failed: {exc}")
         return False
