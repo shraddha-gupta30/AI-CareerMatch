@@ -68,9 +68,12 @@ class Settings(BaseSettings):
         """Normalizes postgres:// or postgresql:// to postgresql+asyncpg:// for SQLAlchemy asyncpg engine."""
         if isinstance(v, str):
             if v.startswith("postgres://"):
-                return v.replace("postgres://", "postgresql+asyncpg://", 1)
-            if v.startswith("postgresql://") and not v.startswith("postgresql+asyncpg://"):
-                return v.replace("postgresql://", "postgresql+asyncpg://", 1)
+                v = v.replace("postgres://", "postgresql+asyncpg://", 1)
+            elif v.startswith("postgresql://") and not v.startswith("postgresql+asyncpg://"):
+                v = v.replace("postgresql://", "postgresql+asyncpg://", 1)
+            # asyncpg accepts 'ssl' query parameter rather than 'sslmode'
+            if "sslmode=" in v:
+                v = v.replace("sslmode=", "ssl=")
         return v
 
     # AI Integration (Used in Phase 4+ Backend Only)

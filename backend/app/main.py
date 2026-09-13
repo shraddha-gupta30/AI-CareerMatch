@@ -29,10 +29,11 @@ def create_application() -> FastAPI:
         lifespan=lifespan,
     )
 
-    # CORS Middleware Configuration for Local Development
+    # CORS Middleware Configuration for Local Development & Render Production
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.ALLOWED_ORIGINS,
+        allow_origin_regex=r"^https://.*\.onrender\.com$",
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],

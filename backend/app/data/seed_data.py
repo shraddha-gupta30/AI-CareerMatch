@@ -170,12 +170,24 @@ async def seed_jobs(session: AsyncSession, skill_map: Dict[str, Skill]) -> int:
 
 
 async def run_seed() -> None:
-    """Master seeding entrypoint."""
-    logger.info("Connecting to database for seeding...")
-    async with AsyncSessionLocal() as session:
-        skill_map = await seed_skills(session)
-        total_jobs = await seed_jobs(session, skill_map)
-        logger.info(f"Seeding completed successfully: {len(skill_map)} skills, {total_jobs} jobs verified.")
+    """Master seeding entrypoint with bounded retry."""
+    max_retries = 15
+    for attempt in range(1, max_retries + 1):
+        try:
+            logger.info("Connecting to database for seeding...")
+            async with AsyncSessionLocal() as session:
+                skill_map = await seed_skills(session)
+                total_jobs = await seed_jobs(session, skill_map)
+                logger.info(f"Seeding completed successfully: {len(skill_map)} skills, {total_jobs} jobs verified.")
+            break
+        except Exception as exc:
+            if attempt == max_retries:
+                logger.error(f"Seeding connection failed after {max_retries} attempts: {exc}")
+                raise
+            logger.warning(
+                f"Database not ready for seeding (attempt {attempt}/{max_retries}). Retrying in 2s... Error: {exc}"
+            )
+            await asyncio.sleep(2)
 
 
 if __name__ == "__main__":

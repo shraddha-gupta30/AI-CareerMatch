@@ -49,12 +49,22 @@ export async function loginUser(payload: LoginPayload): Promise<TokenResponse> {
 }
 
 export async function fetchCurrentUser(token: string): Promise<User> {
+  let signal: AbortSignal | undefined;
+  if (typeof AbortSignal !== 'undefined' && typeof AbortSignal.timeout === 'function') {
+    signal = AbortSignal.timeout(8000);
+  } else if (typeof AbortController !== 'undefined') {
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(new Error('Session request timed out after 8 seconds')), 8000);
+    signal = controller.signal;
+  }
+
   const response = await fetch(`${BASE_URL}/auth/me`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,
       'Accept': 'application/json',
     },
+    signal,
   });
   return handleResponse<User>(response);
 }

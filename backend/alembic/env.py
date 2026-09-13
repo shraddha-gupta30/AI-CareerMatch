@@ -62,8 +62,21 @@ async def run_async_migrations() -> None:
         future=True,
     )
 
-    async with connectable.connect() as connection:
-        await connection.run_sync(do_run_migrations)
+    # Resilient bounded retry for production startup delays (max 30s)
+    max_retries = 15
+    for attempt in range(1, max_retries + 1):
+        try:
+            async with connectable.connect() as connection:
+                await connection.run_sync(do_run_migrations)
+            break
+        except Exception as exc:
+            if attempt == max_retries:
+                raise
+            import logging
+            logging.getLogger("alembic.env").warning(
+                f"Database not ready yet (attempt {attempt}/{max_retries}). Retrying in 2s... Error: {exc}"
+            )
+            await asyncio.sleep(2)
 
     await connectable.dispose()
 
