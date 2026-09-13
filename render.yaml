@@ -10,7 +10,6 @@ databases:
     user: postgres
     plan: free
     postgresMajorVersion: "16"
-    ipAllowList: [] # Allow internal access from backend web service
 
 services:
   # ----------------------------------------------------------------------------
@@ -51,7 +50,6 @@ services:
   - type: web
     name: ai-careermatch-frontend
     runtime: static
-    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
