@@ -5,6 +5,11 @@ import {
   fetchJobs,
   fetchJobDetail,
   fetchJobMatch,
+  fetchJobGaps,
+  simulateJobMatch,
+  fetchJobRoadmap,
+  generateJobRoadmap,
+  updateRoadmapItemStatus,
   saveJob,
   unsaveJob,
 } from '../services/jobs';
@@ -13,7 +18,15 @@ import {
   JobDetail,
   JobMatchBreakdown,
   JobFilterParams,
+  SkillGapResponse,
+  SimulationRequest,
+  SimulationResponse,
+  Roadmap,
+  RoadmapItemStatus,
 } from '../types/job';
+import { SkillGapAnalysis } from '../components/jobs/SkillGapAnalysis';
+import { CareerSimulator } from '../components/jobs/CareerSimulator';
+import { CareerRoadmap } from '../components/jobs/CareerRoadmap';
 import {
   Briefcase,
   Search,
@@ -35,11 +48,14 @@ import {
   FileText,
   DollarSign,
   TrendingUp,
+  Sliders,
+  Compass,
+  AlertCircle,
 } from 'lucide-react';
 
 export const JobsPage: React.FC = () => {
   const { token, isAuthenticated } = useAuthStore();
-  const { navigate } = useNavigationStore();
+  const { navigate, targetJobId, targetTab, clearJobTarget } = useNavigationStore();
 
   // State
   const [jobs, setJobs] = useState<JobItem[]>([]);
@@ -51,6 +67,27 @@ export const JobsPage: React.FC = () => {
   const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
   const [activeJobDetail, setActiveJobDetail] = useState<JobDetail | null>(null);
   const [activeMatch, setActiveMatch] = useState<JobMatchBreakdown | null>(null);
+
+  // Phase 6B: Skill Gap Analysis state
+  const [activeGaps, setActiveGaps] = useState<SkillGapResponse | null>(null);
+  const [isLoadingGaps, setIsLoadingGaps] = useState(false);
+  const [gapsError, setGapsError] = useState<string | null>(null);
+
+  // Phase 6B: What-If Career Simulator state
+  const [simAddedSkills, setSimAddedSkills] = useState<{ name: string; proficiency_level: string }[]>([]);
+  const [simModifiedSkills, setSimModifiedSkills] = useState<{ name: string; proficiency_level: string }[]>([]);
+  const [simRemovedSkills, setSimRemovedSkills] = useState<string[]>([]);
+  const [simExperienceYears, setSimExperienceYears] = useState<number | ''>('');
+  const [isSimulating, setIsSimulating] = useState(false);
+  const [simResult, setSimResult] = useState<SimulationResponse | null>(null);
+  const [simError, setSimError] = useState<string | null>(null);
+
+  // Phase 7: Career Roadmap state
+  const [activeRoadmap, setActiveRoadmap] = useState<Roadmap | null>(null);
+  const [isLoadingRoadmap, setIsLoadingRoadmap] = useState(false);
+  const [isGeneratingRoadmap, setIsGeneratingRoadmap] = useState(false);
+  const [roadmapError, setRoadmapError] = useState<string | null>(null);
+  const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
 
   const [isLoadingJobs, setIsLoadingJobs] = useState(false);
   const [isLoadingDetail, setIsLoadingDetail] = useState(false);
@@ -68,7 +105,7 @@ export const JobsPage: React.FC = () => {
   const [savedOnlyFilter, setSavedOnlyFilter] = useState(false);
 
   // Active view tab in detail view
-  const [detailTab, setDetailTab] = useState<'overview' | 'match'>('match');
+  const [detailTab, setDetailTab] = useState<'overview' | 'match' | 'gaps' | 'simulator' | 'roadmap'>('match');
 
   // Load jobs list
   const loadJobs = async (page: number = 1) => {
@@ -90,8 +127,8 @@ export const JobsPage: React.FC = () => {
       setCurrentPage(data.page);
       setTotalPages(data.pages);
 
-      // Auto-select first job if none selected
-      if (data.items.length > 0 && !selectedJobId) {
+      // Auto-select first job if none selected and no external target pending
+      if (data.items.length > 0 && !selectedJobId && !targetJobId) {
         selectJob(data.items[0].id);
       } else if (data.items.length === 0) {
         setActiveJobDetail(null);
@@ -109,12 +146,32 @@ export const JobsPage: React.FC = () => {
     loadJobs(1);
   }, [searchTerm, locationFilter, employmentTypeFilter, experienceLevelFilter, savedOnlyFilter, token, isAuthenticated]);
 
+  // Handle external navigation target (e.g. from Dashboard)
+  useEffect(() => {
+    if (targetJobId) {
+      selectJob(targetJobId);
+      if (targetTab) {
+        setDetailTab(targetTab);
+      }
+      clearJobTarget();
+    }
+  }, [targetJobId, targetTab]);
+
   // Select job
   const selectJob = async (id: string) => {
     setSelectedJobId(id);
     setIsLoadingDetail(true);
     setErrorNotice(null);
     setNoProfileNotice(false);
+    setGapsError(null);
+    setSimError(null);
+    setSimResult(null);
+    setSimAddedSkills([]);
+    setSimModifiedSkills([]);
+    setSimRemovedSkills([]);
+    setSimExperienceYears('');
+    setActiveRoadmap(null);
+    setRoadmapError(null);
 
     try {
       const detail = await fetchJobDetail(id, token);
@@ -145,11 +202,194 @@ export const JobsPage: React.FC = () => {
       } else {
         setActiveMatch(null);
       }
+
+      // Load gaps if authenticated
+      if (isAuthenticated && token) {
+        setIsLoadingGaps(true);
+        try {
+          const gapsData = await fetchJobGaps(id, token);
+          setActiveGaps(gapsData);
+          setSimExperienceYears(gapsData.experience_gap.candidate_experience_years);
+        } catch (gapErr: any) {
+          const isProfileRequired =
+            gapErr.message?.includes('PROFILE_REQUIRED') ||
+            gapErr.message?.toLowerCase().includes('profile');
+          if (isProfileRequired) {
+            setNoProfileNotice(true);
+          } else {
+            setGapsError(gapErr.message || 'Failed to load skill gap analysis.');
+          }
+          setActiveGaps(null);
+        } finally {
+          setIsLoadingGaps(false);
+        }
+
+        // Load existing roadmap if available
+        setIsLoadingRoadmap(true);
+        fetchJobRoadmap(id, token)
+          .then((rm) => {
+            setActiveRoadmap(rm);
+          })
+          .catch(() => {
+            setActiveRoadmap(null);
+          })
+          .finally(() => {
+            setIsLoadingRoadmap(false);
+          });
+      } else {
+        setActiveGaps(null);
+        setActiveRoadmap(null);
+      }
     } catch (err) {
       setErrorNotice(err instanceof Error ? err.message : 'Failed to load job details.');
     } finally {
       setIsLoadingDetail(false);
     }
+  };
+
+  // Phase 7: Roadmap handlers
+  const handleGenerateRoadmap = async () => {
+    if (!selectedJobId || !token) {
+      if (!isAuthenticated) {
+        navigate('/login');
+      }
+      return;
+    }
+    setIsGeneratingRoadmap(true);
+    setRoadmapError(null);
+    try {
+      const rm = await generateJobRoadmap(selectedJobId, token);
+      setActiveRoadmap(rm);
+      setDetailTab('roadmap');
+      setActionNotice(`Personalized career roadmap generated with ${rm.total_items} milestones.`);
+      setTimeout(() => setActionNotice(null), 4000);
+    } catch (err: any) {
+      const msg = err instanceof Error ? err.message : 'Failed to generate career roadmap.';
+      if (msg.includes('PROFILE_REQUIRED') || msg.toLowerCase().includes('profile')) {
+        setNoProfileNotice(true);
+      } else {
+        setRoadmapError(msg);
+      }
+    } finally {
+      setIsGeneratingRoadmap(false);
+    }
+  };
+
+  const handleRoadmapStatusChange = async (itemId: string, newStatus: RoadmapItemStatus) => {
+    if (!activeRoadmap || !token) return;
+    setUpdatingItemId(itemId);
+    try {
+      const res = await updateRoadmapItemStatus(activeRoadmap.id, itemId, newStatus, token);
+      setActiveRoadmap((prev) => {
+        if (!prev) return prev;
+        const updatedItems = prev.items.map((it) =>
+          it.id === itemId ? res.item : it
+        );
+        return {
+          ...prev,
+          items: updatedItems,
+          completed_items: res.roadmap_progress.completed_items,
+          total_items: res.roadmap_progress.total_items,
+          progress: res.roadmap_progress,
+          updated_at: new Date().toISOString(),
+        };
+      });
+    } catch (err: any) {
+      setRoadmapError(err instanceof Error ? err.message : 'Failed to update milestone status.');
+    } finally {
+      setUpdatingItemId(null);
+    }
+  };
+
+  // Simulator handlers
+  const handleAddSkill = (skill: { name: string; proficiency_level: string }) => {
+    setSimAddedSkills((prev) => {
+      const filtered = prev.filter((s) => s.name.toLowerCase() !== skill.name.toLowerCase());
+      return [...filtered, skill];
+    });
+  };
+
+  const handleRemoveAddedSkill = (name: string) => {
+    setSimAddedSkills((prev) => prev.filter((s) => s.name.toLowerCase() !== name.toLowerCase()));
+  };
+
+  const handleModifySkill = (skill: { name: string; proficiency_level: string }) => {
+    setSimModifiedSkills((prev) => {
+      const filtered = prev.filter((s) => s.name.toLowerCase() !== skill.name.toLowerCase());
+      return [...filtered, skill];
+    });
+  };
+
+  const handleRemoveModifiedSkill = (name: string) => {
+    setSimModifiedSkills((prev) => prev.filter((s) => s.name.toLowerCase() !== name.toLowerCase()));
+  };
+
+  const handleToggleRemoveSkill = (name: string) => {
+    setSimRemovedSkills((prev) =>
+      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]
+    );
+  };
+
+  const handleChangeExperience = (years: number | '') => {
+    setSimExperienceYears(years);
+  };
+
+  const handleRunSimulation = async () => {
+    if (!selectedJobId || !token) return;
+    setIsSimulating(true);
+    setSimError(null);
+
+    try {
+      const payload: SimulationRequest = {};
+      if (simAddedSkills.length > 0) {
+        payload.add_skills = simAddedSkills.map((s) => ({
+          name: s.name,
+          proficiency_level: s.proficiency_level,
+          proficiency_source: 'user_verified',
+        }));
+      }
+      if (simModifiedSkills.length > 0) {
+        payload.modify_skills = simModifiedSkills.map((s) => ({
+          name: s.name,
+          proficiency_level: s.proficiency_level,
+        }));
+      }
+      if (simRemovedSkills.length > 0) {
+        payload.remove_skills = simRemovedSkills;
+      }
+      if (typeof simExperienceYears === 'number' && simExperienceYears >= 0) {
+        payload.experience_years = simExperienceYears;
+      }
+
+      const res = await simulateJobMatch(selectedJobId, payload, token);
+      setSimResult(res);
+    } catch (err: any) {
+      const isProfileRequired =
+        err.message?.includes('PROFILE_REQUIRED') ||
+        err.message?.toLowerCase().includes('profile');
+      if (isProfileRequired) {
+        setNoProfileNotice(true);
+      } else {
+        setSimError(err.message || 'Simulation failed to run.');
+      }
+    } finally {
+      setIsSimulating(false);
+    }
+  };
+
+  const handleResetScenario = () => {
+    setSimAddedSkills([]);
+    setSimModifiedSkills([]);
+    setSimRemovedSkills([]);
+    const baselineExp = activeGaps?.experience_gap.candidate_experience_years;
+    setSimExperienceYears(typeof baselineExp === 'number' ? baselineExp : '');
+    setSimResult(null);
+    setSimError(null);
+  };
+
+  const handleQuickSimulateAddSkill = (skillName: string, reqProf: string) => {
+    handleAddSkill({ name: skillName, proficiency_level: reqProf || 'intermediate' });
+    setDetailTab('simulator');
   };
 
   // Toggle Save Job
@@ -536,11 +776,11 @@ export const JobsPage: React.FC = () => {
                 </div>
 
                 {/* Tabs Navigation */}
-                <div className="flex space-x-2 mt-6 border-b border-slate-200 -mb-6">
+                <div className="flex space-x-2 mt-6 border-b border-slate-200 -mb-6 overflow-x-auto pb-1">
                   <button
                     type="button"
                     onClick={() => setDetailTab('match')}
-                    className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center space-x-1.5 ${
+                    className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center space-x-1.5 whitespace-nowrap ${
                       detailTab === 'match'
                         ? 'border-sky-600 text-sky-600'
                         : 'border-transparent text-slate-500 hover:text-slate-700'
@@ -551,8 +791,63 @@ export const JobsPage: React.FC = () => {
                   </button>
                   <button
                     type="button"
+                    onClick={() => setDetailTab('gaps')}
+                    className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center space-x-1.5 whitespace-nowrap ${
+                      detailTab === 'gaps'
+                        ? 'border-sky-600 text-sky-600'
+                        : 'border-transparent text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    <TrendingUp className="w-3.5 h-3.5" />
+                    <span>Skill Gap Analysis</span>
+                    {activeGaps && (activeGaps.missing_required_skills.length > 0 || activeGaps.experience_gap.experience_gap > 0) && (
+                      <span className="ml-1 px-1.5 py-0.2 bg-rose-100 text-rose-700 rounded-full text-[10px] font-bold">
+                        {activeGaps.missing_required_skills.length + (activeGaps.experience_gap.experience_gap > 0 ? 1 : 0)}
+                      </span>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setDetailTab('simulator')}
+                    className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center space-x-1.5 whitespace-nowrap ${
+                      detailTab === 'simulator'
+                        ? 'border-sky-600 text-sky-600'
+                        : 'border-transparent text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    <Sliders className="w-3.5 h-3.5" />
+                    <span>What-If Simulator</span>
+                    {(simAddedSkills.length + simModifiedSkills.length + simRemovedSkills.length > 0 || (typeof simExperienceYears === 'number' && activeGaps && simExperienceYears !== activeGaps.experience_gap.candidate_experience_years)) && (
+                      <span className="ml-1 w-2 h-2 rounded-full bg-amber-500"></span>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setDetailTab('roadmap')}
+                    className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center space-x-1.5 whitespace-nowrap ${
+                      detailTab === 'roadmap'
+                        ? 'border-sky-600 text-sky-600'
+                        : 'border-transparent text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    <Compass className="w-3.5 h-3.5" />
+                    <span>Career Roadmap</span>
+                    {activeRoadmap && (
+                      <span
+                        className={`ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                          activeRoadmap.progress.progress_percentage === 100
+                            ? 'bg-emerald-100 text-emerald-700'
+                            : 'bg-indigo-100 text-indigo-700'
+                        }`}
+                      >
+                        {activeRoadmap.progress.progress_percentage.toFixed(0)}%
+                      </span>
+                    )}
+                  </button>
+                  <button
+                    type="button"
                     onClick={() => setDetailTab('overview')}
-                    className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center space-x-1.5 ${
+                    className={`pb-2.5 px-3 text-xs font-semibold border-b-2 transition flex items-center space-x-1.5 whitespace-nowrap ${
                       detailTab === 'overview'
                         ? 'border-sky-600 text-sky-600'
                         : 'border-transparent text-slate-500 hover:text-slate-700'
@@ -886,6 +1181,186 @@ export const JobsPage: React.FC = () => {
                             <p className="font-bold text-slate-900">Education Compatibility</p>
                             <p className="text-slate-600 mt-0.5">{activeMatch.education_compatibility.explanation}</p>
                           </div>
+                        </div>
+
+                        {/* Quick Nav to Skill Gaps, Simulator & Roadmap */}
+                        <div className="pt-4 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                          <button
+                            type="button"
+                            onClick={() => setDetailTab('gaps')}
+                            className="py-2 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-lg transition flex items-center justify-center space-x-1.5"
+                          >
+                            <TrendingUp className="w-3.5 h-3.5 text-sky-600" />
+                            <span>Skill Gap Analysis</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setDetailTab('simulator')}
+                            className="py-2 px-3 bg-sky-50 hover:bg-sky-100 text-sky-800 font-semibold text-xs rounded-lg transition border border-sky-200 flex items-center justify-center space-x-1.5"
+                          >
+                            <Sliders className="w-3.5 h-3.5 text-sky-600" />
+                            <span>What-If Simulator</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setDetailTab('roadmap')}
+                            className="py-2 px-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 font-semibold text-xs rounded-lg transition border border-indigo-200 flex items-center justify-center space-x-1.5"
+                          >
+                            <Compass className="w-3.5 h-3.5 text-indigo-600" />
+                            <span>Career Roadmap</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {detailTab === 'gaps' && (
+                  <SkillGapAnalysis
+                    gaps={activeGaps}
+                    isLoading={isLoadingGaps}
+                    error={gapsError}
+                    onRetry={() => selectedJobId && selectJob(selectedJobId)}
+                    onNavigateToResume={() => navigate('/resume')}
+                    onNavigateToProfile={() => navigate('/profile')}
+                    onSimulateAddSkill={handleQuickSimulateAddSkill}
+                    onSwitchToSimulator={() => setDetailTab('simulator')}
+                    onSwitchToRoadmap={() => setDetailTab('roadmap')}
+                    isProfileRequired={noProfileNotice}
+                  />
+                )}
+
+                {detailTab === 'simulator' && (
+                  <CareerSimulator
+                    jobTitle={activeJobDetail.title}
+                    jobCompany={activeJobDetail.company}
+                    missingSkills={
+                      activeGaps?.missing_required_skills.map((s) => ({
+                        name: s.name,
+                        required_proficiency: s.required_proficiency,
+                      })) || []
+                    }
+                    existingSkills={
+                      activeGaps?.matched_required_skills
+                        .concat(activeGaps?.matched_preferred_skills || [])
+                        .map((s) => ({
+                          name: s.name,
+                          proficiency_level: s.candidate_proficiency,
+                        })) ||
+                      activeMatch?.matched_skills.map((s) => ({
+                        name: s.name,
+                        proficiency_level: s.candidate_proficiency,
+                      })) ||
+                      []
+                    }
+                    candidateExperienceYears={
+                      activeGaps?.experience_gap.candidate_experience_years || 0
+                    }
+                    addedSkills={simAddedSkills}
+                    modifiedSkills={simModifiedSkills}
+                    removedSkills={simRemovedSkills}
+                    simExperienceYears={simExperienceYears}
+                    isSimulating={isSimulating}
+                    simResult={simResult}
+                    simError={simError}
+                    isProfileRequired={noProfileNotice}
+                    onAddSkill={handleAddSkill}
+                    onRemoveAddedSkill={handleRemoveAddedSkill}
+                    onModifySkill={handleModifySkill}
+                    onRemoveModifiedSkill={handleRemoveModifiedSkill}
+                    onToggleRemoveSkill={handleToggleRemoveSkill}
+                    onChangeExperience={handleChangeExperience}
+                    onRunSimulation={handleRunSimulation}
+                    onResetScenario={handleResetScenario}
+                    onNavigateToResume={() => navigate('/resume')}
+                    onNavigateToProfile={() => navigate('/profile')}
+                  />
+                )}
+
+                {detailTab === 'roadmap' && (
+                  <div>
+                    {!isAuthenticated ? (
+                      <div className="p-8 text-center bg-slate-50 rounded-xl border border-slate-200">
+                        <Compass className="w-10 h-10 text-indigo-600 mx-auto mb-3" />
+                        <h3 className="text-sm font-bold text-slate-900">Sign in for Career Roadmap</h3>
+                        <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
+                          Sign in with your candidate account to generate structured, prerequisite-aware milestones and track your skill acquisition progress toward this role.
+                        </p>
+                        <button
+                          type="button"
+                          onClick={() => navigate('/login')}
+                          className="mt-4 px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-lg hover:bg-indigo-700 transition"
+                        >
+                          Sign In
+                        </button>
+                      </div>
+                    ) : noProfileNotice ? (
+                      <div className="p-8 text-center bg-amber-50/50 rounded-xl border border-amber-200">
+                        <AlertCircle className="w-10 h-10 text-amber-600 mx-auto mb-3" />
+                        <h3 className="text-sm font-bold text-amber-900">Career Profile Required</h3>
+                        <p className="text-xs text-amber-700 mt-1 max-w-md mx-auto">
+                          To generate a personalized roadmap, we need your current skills and experience. Please create your profile or upload a resume first.
+                        </p>
+                        <div className="mt-4 flex items-center justify-center space-x-3">
+                          <button
+                            type="button"
+                            onClick={() => navigate('/resume')}
+                            className="px-4 py-2 bg-amber-600 text-white text-xs font-semibold rounded-lg hover:bg-amber-700 transition"
+                          >
+                            Upload Resume
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => navigate('/profile')}
+                            className="px-4 py-2 bg-white border border-amber-300 text-amber-800 text-xs font-semibold rounded-lg hover:bg-amber-50 transition"
+                          >
+                            Complete Profile
+                          </button>
+                        </div>
+                      </div>
+                    ) : isLoadingRoadmap ? (
+                      <div className="py-16 text-center">
+                        <Loader2 className="w-8 h-8 text-indigo-600 animate-spin mx-auto mb-3" />
+                        <p className="text-xs font-medium text-slate-600">Loading your career roadmap...</p>
+                      </div>
+                    ) : isGeneratingRoadmap ? (
+                      <div className="py-16 text-center">
+                        <Loader2 className="w-8 h-8 text-indigo-600 animate-spin mx-auto mb-3" />
+                        <p className="text-sm font-semibold text-slate-900">Generating Personalized Roadmap...</p>
+                        <p className="text-xs text-slate-500 mt-1">Analyzing skill gaps, ordering prerequisites, and tailoring milestones.</p>
+                      </div>
+                    ) : activeRoadmap ? (
+                      <CareerRoadmap
+                        roadmap={activeRoadmap}
+                        jobTitle={activeJobDetail.title}
+                        company={activeJobDetail.company}
+                        isRegenerating={isGeneratingRoadmap}
+                        onRegenerate={handleGenerateRoadmap}
+                        onStatusChange={handleRoadmapStatusChange}
+                        updatingItemId={updatingItemId}
+                      />
+                    ) : (
+                      <div className="p-8 text-center bg-slate-50 rounded-xl border border-slate-200">
+                        <Compass className="w-12 h-12 text-indigo-600 mx-auto mb-3" />
+                        <h3 className="text-base font-bold text-slate-900">No Roadmap Generated Yet</h3>
+                        <p className="text-xs text-slate-500 mt-1 max-w-lg mx-auto">
+                          Transform your identified skill gaps for <span className="font-semibold text-slate-700">{activeJobDetail.title}</span> at <span className="font-semibold text-slate-700">{activeJobDetail.company}</span> into a step-by-step, 4-stage action plan with prerequisites, estimated hours, and project deliverables.
+                        </p>
+                        {roadmapError && (
+                          <div className="mt-4 p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-lg text-xs max-w-md mx-auto">
+                            {roadmapError}
+                          </div>
+                        )}
+                        <div className="mt-6 flex items-center justify-center space-x-3">
+                          <button
+                            type="button"
+                            onClick={handleGenerateRoadmap}
+                            disabled={isGeneratingRoadmap}
+                            className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-lg shadow-sm transition flex items-center space-x-2 disabled:opacity-50"
+                          >
+                            <Sparkles className="w-4 h-4" />
+                            <span>Generate Career Roadmap</span>
+                          </button>
                         </div>
                       </div>
                     )}

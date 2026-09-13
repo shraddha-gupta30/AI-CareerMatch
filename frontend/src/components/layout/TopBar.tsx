@@ -16,7 +16,7 @@ export const TopBar: React.FC = () => {
     <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-30">
       <div
         className="flex items-center space-x-3 cursor-pointer select-none"
-        onClick={() => navigate(isAuthenticated ? '/profile' : '/')}
+        onClick={() => navigate(isAuthenticated ? '/dashboard' : '/')}
       >
         <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-600 flex items-center justify-center text-white shadow-sm">
           <Compass className="w-5 h-5" />
@@ -24,7 +24,7 @@ export const TopBar: React.FC = () => {
         <div>
           <span className="text-base font-bold text-slate-900 tracking-tight">AI CareerMatch</span>
           <span className="ml-2 px-2 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-800 rounded-full">
-            Phase 5 Active
+            Phase 8 Active
           </span>
         </div>
       </div>

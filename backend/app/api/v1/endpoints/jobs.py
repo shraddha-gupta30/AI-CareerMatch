@@ -21,6 +21,11 @@ from app.models.match import JobMatch
 from app.models.profile import CandidateProfile
 from app.models.skill import Skill, SkillAlias, SkillRelationship
 from app.models.user import User
+from app.schemas.gap import (
+    SimulationRequest,
+    SimulationResponse,
+    SkillGapResponse,
+)
 from app.schemas.job import (
     JobDetailResponse,
     JobMatchBreakdownResponse,
@@ -29,7 +34,10 @@ from app.schemas.job import (
     PaginatedJobsResponse,
     SavedJobResponse,
 )
+from app.schemas.roadmap import RoadmapDetailResponse
+from app.services.gap_service import derive_skill_gaps, run_what_if_simulation
 from app.services.matching_engine import calculate_job_match
+from app.services.roadmap_service import generate_career_roadmap, get_roadmap_detail
 
 router = APIRouter()
 
@@ -426,6 +434,109 @@ async def evaluate_job_match(
     return JobMatchBreakdownResponse.model_validate(breakdown_data)
 
 
+@router.get(
+    "/{job_id}/gaps",
+    response_model=SkillGapResponse,
+    summary="Skill & Experience Gap Analysis",
+    description="Categorizes matched, partial, and missing skills (both required and preferred), plus experience and education compatibility.",
+)
+async def get_job_gaps(
+    job_id: uuid.UUID,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+) -> SkillGapResponse:
+    # 1. Fetch Job
+    j_stmt = (
+        select(Job)
+        .where(Job.id == job_id, Job.is_active == True)
+        .options(
+            selectinload(Job.job_skills).selectinload(JobSkill.skill),
+        )
+    )
+    j_res = await db.execute(j_stmt)
+    job = j_res.scalar_one_or_none()
+    if not job:
+        raise NotFoundError(message=f"Job posting '{job_id}' not found.", code="JOB_NOT_FOUND")
+
+    # 2. Fetch Profile
+    prof_stmt = (
+        select(CandidateProfile)
+        .where(CandidateProfile.user_id == current_user.id)
+        .options(
+            selectinload(CandidateProfile.skills).selectinload(CandidateProfile.skills.property.mapper.class_.skill),
+            selectinload(CandidateProfile.education),
+            selectinload(CandidateProfile.experience),
+        )
+    )
+    p_res = await db.execute(prof_stmt)
+    profile = p_res.scalar_one_or_none()
+
+    if not profile:
+        raise AppException(
+            message="Career Profile is required to analyze skill gaps. Please complete your profile first.",
+            status_code=404,
+            code="PROFILE_REQUIRED",
+        )
+
+    # 3. Load Taxonomy Relationships & Aliases
+    rel_map, alias_map = await _get_skill_taxonomy_maps(db)
+
+    # 4. Derive Gaps
+    return derive_skill_gaps(profile, job, rel_map, alias_map)
+
+
+@router.post(
+    "/{job_id}/simulate",
+    response_model=SimulationResponse,
+    summary="What-If Career Simulator",
+    description="Simulates match score changes in-memory based on added skills, modified proficiencies, or adjusted experience without persisting any changes.",
+)
+async def simulate_job_match(
+    job_id: uuid.UUID,
+    payload: SimulationRequest,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+) -> SimulationResponse:
+    # 1. Fetch Job
+    j_stmt = (
+        select(Job)
+        .where(Job.id == job_id, Job.is_active == True)
+        .options(
+            selectinload(Job.job_skills).selectinload(JobSkill.skill),
+        )
+    )
+    j_res = await db.execute(j_stmt)
+    job = j_res.scalar_one_or_none()
+    if not job:
+        raise NotFoundError(message=f"Job posting '{job_id}' not found.", code="JOB_NOT_FOUND")
+
+    # 2. Fetch Profile
+    prof_stmt = (
+        select(CandidateProfile)
+        .where(CandidateProfile.user_id == current_user.id)
+        .options(
+            selectinload(CandidateProfile.skills).selectinload(CandidateProfile.skills.property.mapper.class_.skill),
+            selectinload(CandidateProfile.education),
+            selectinload(CandidateProfile.experience),
+        )
+    )
+    p_res = await db.execute(prof_stmt)
+    profile = p_res.scalar_one_or_none()
+
+    if not profile:
+        raise AppException(
+            message="Career Profile is required to run match simulation. Please complete your profile first.",
+            status_code=404,
+            code="PROFILE_REQUIRED",
+        )
+
+    # 3. Load Taxonomy Relationships & Aliases
+    rel_map, alias_map = await _get_skill_taxonomy_maps(db)
+
+    # 4. Pure In-Memory Simulation
+    return run_what_if_simulation(profile, job, payload, rel_map, alias_map)
+
+
 @router.post(
     "/{job_id}/save",
     status_code=status.HTTP_200_OK,
@@ -504,3 +615,65 @@ async def unsave_job(
         await db.commit()
 
     return {"saved": False, "job_id": str(job_id)}
+
+
+@router.post(
+    "/{job_id}/roadmap",
+    response_model=RoadmapDetailResponse,
+    summary="Generate or Regenerate Career Roadmap",
+    description="Generates a personalized, DAG-ordered learning roadmap based on skill gaps, prerequisites, and experience.",
+)
+async def generate_job_roadmap(
+    job_id: uuid.UUID,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+) -> RoadmapDetailResponse:
+    # 1. Fetch Job
+    j_stmt = (
+        select(Job)
+        .where(Job.id == job_id, Job.is_active == True)
+        .options(
+            selectinload(Job.job_skills).selectinload(JobSkill.skill),
+        )
+    )
+    j_res = await db.execute(j_stmt)
+    job = j_res.scalar_one_or_none()
+    if not job:
+        raise NotFoundError(message=f"Job posting '{job_id}' not found.", code="JOB_NOT_FOUND")
+
+    # 2. Fetch Profile
+    prof_stmt = (
+        select(CandidateProfile)
+        .where(CandidateProfile.user_id == current_user.id)
+        .options(
+            selectinload(CandidateProfile.skills).selectinload(CandidateProfile.skills.property.mapper.class_.skill),
+            selectinload(CandidateProfile.education),
+            selectinload(CandidateProfile.experience),
+        )
+    )
+    p_res = await db.execute(prof_stmt)
+    profile = p_res.scalar_one_or_none()
+
+    if not profile:
+        raise AppException(
+            message="Career Profile is required to generate a roadmap. Please complete your profile first.",
+            status_code=404,
+            code="PROFILE_REQUIRED",
+        )
+
+    # 3. Generate Roadmap
+    roadmap = await generate_career_roadmap(profile=profile, job=job, db=db)
+
+    # 4. Audit trail
+    activity = CandidateActivity(
+        user_id=current_user.id,
+        activity_type="roadmap_generated",
+        description=f"Generated career roadmap for '{job.title}' at {job.company}",
+        activity_metadata={"job_id": str(job_id), "roadmap_id": str(roadmap.id), "title": job.title},
+    )
+    db.add(activity)
+    await db.commit()
+
+    # 5. Return complete detail
+    return await get_roadmap_detail(roadmap_id=roadmap.id, user_id=current_user.id, db=db)
+

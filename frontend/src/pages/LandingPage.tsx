@@ -28,10 +28,10 @@ export const LandingPage: React.FC = () => {
         <div className="flex items-center space-x-3">
           {isAuthenticated ? (
             <button
-              onClick={() => navigate('/profile')}
+              onClick={() => navigate('/dashboard')}
               className="inline-flex items-center space-x-2 px-4 py-2 text-xs font-semibold rounded-lg bg-sky-600 text-white hover:bg-sky-700 shadow-sm transition"
             >
-              <span>Go to Profile</span>
+              <span>Go to Dashboard</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           ) : (
@@ -72,10 +72,10 @@ export const LandingPage: React.FC = () => {
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           {isAuthenticated ? (
             <button
-              onClick={() => navigate('/profile')}
+              onClick={() => navigate('/dashboard')}
               className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 text-sm font-semibold rounded-xl bg-sky-600 text-white hover:bg-sky-700 shadow-sm transition"
             >
-              <span>Manage Career Profile ({user?.full_name})</span>
+              <span>Go to Command Center ({user?.full_name})</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           ) : (

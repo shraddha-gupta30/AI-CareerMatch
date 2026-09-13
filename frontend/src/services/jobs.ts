@@ -4,6 +4,13 @@ import {
   SavedJobItem,
   JobMatchBreakdown,
   JobFilterParams,
+  SkillGapResponse,
+  SimulationRequest,
+  SimulationResponse,
+  Roadmap,
+  RoadmapItemStatus,
+  RoadmapItemUpdateResponse,
+  JobRoadmapGenerationResponse,
 } from '../types/job';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1';
@@ -129,3 +136,107 @@ export async function fetchSavedJobs(token: string): Promise<SavedJobItem[]> {
   });
   return handleResponse<SavedJobItem[]>(response);
 }
+
+export async function fetchJobGaps(
+  jobId: string,
+  token: string
+): Promise<SkillGapResponse> {
+  const response = await fetch(`${BASE_URL}/jobs/${jobId}/gaps`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json',
+    },
+  });
+  return handleResponse<SkillGapResponse>(response);
+}
+
+export async function simulateJobMatch(
+  jobId: string,
+  payload: SimulationRequest,
+  token: string
+): Promise<SimulationResponse> {
+  const response = await fetch(`${BASE_URL}/jobs/${jobId}/simulate`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+  return handleResponse<SimulationResponse>(response);
+}
+
+export async function fetchCandidateRoadmaps(
+  token: string
+): Promise<Roadmap[]> {
+  const response = await fetch(`${BASE_URL}/roadmaps`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json',
+    },
+  });
+  return handleResponse<Roadmap[]>(response);
+}
+
+export async function fetchJobRoadmap(
+  jobId: string,
+  token: string
+): Promise<Roadmap | null> {
+  const response = await fetch(`${BASE_URL}/roadmaps`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json',
+    },
+  });
+  const list = await handleResponse<Array<{ id: string; target_job_id?: string | null }>>(response);
+  const existing = list.find((r) => r.target_job_id === jobId);
+  if (!existing) {
+    return null;
+  }
+  const detailResponse = await fetch(`${BASE_URL}/roadmaps/${existing.id}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json',
+    },
+  });
+  return handleResponse<Roadmap>(detailResponse);
+}
+
+export async function generateJobRoadmap(
+  jobId: string,
+  token: string
+): Promise<JobRoadmapGenerationResponse> {
+  const response = await fetch(`${BASE_URL}/jobs/${jobId}/roadmap`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json',
+    },
+  });
+  return handleResponse<JobRoadmapGenerationResponse>(response);
+}
+
+export async function updateRoadmapItemStatus(
+  roadmapId: string,
+  itemId: string,
+  status: RoadmapItemStatus,
+  token: string
+): Promise<RoadmapItemUpdateResponse> {
+  const response = await fetch(`${BASE_URL}/roadmaps/${roadmapId}/items/${itemId}`, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({ status }),
+  });
+  return handleResponse<RoadmapItemUpdateResponse>(response);
+}
+
+

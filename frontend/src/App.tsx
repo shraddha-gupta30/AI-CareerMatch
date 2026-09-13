@@ -9,6 +9,7 @@ import { RegisterPage } from './pages/RegisterPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { ResumePage } from './pages/ResumePage';
 import { JobsPage } from './pages/JobsPage';
+import { DashboardPage } from './pages/DashboardPage';
 import { HealthStatusCard } from './features/health/HealthStatusCard';
 import { Layers, Code2, Lock, CheckCircle, Loader2 } from 'lucide-react';
 
@@ -17,8 +18,9 @@ const PIPELINE_STEPS = [
   { step: '2', title: 'Resume PDF Parser', desc: 'Structured extraction & staging review', phase: 'Phase 4 (Active)' },
   { step: '3', title: 'Curated Catalog', desc: '42 curated industry job positions', phase: 'Phase 5 (Active)' },
   { step: '4', title: 'Deterministic Match', desc: 'Proportional weight scoring engine', phase: 'Phase 5 (Active)' },
-  { step: '5', title: 'Career Simulator', desc: 'What-If score progression', phase: 'Phase 7' },
-  { step: '6', title: 'Dynamic Roadmap', desc: 'Prerequisite DAG learning path', phase: 'Phase 8' },
+  { step: '5', title: 'Career Simulator', desc: 'What-If score progression', phase: 'Phase 6 (Active)' },
+  { step: '6', title: 'Dynamic Roadmap', desc: 'Prerequisite DAG learning path', phase: 'Phase 7 (Active)' },
+  { step: '7', title: 'Executive Dashboard', desc: 'Integrated candidate command center', phase: 'Phase 8 (Active)' },
 ];
 
 export const App: React.FC = () => {
@@ -32,10 +34,10 @@ export const App: React.FC = () => {
   // Protected Route Guards
   useEffect(() => {
     if (!isLoading) {
-      if (!isAuthenticated && (currentPath === '/profile' || currentPath === '/resume')) {
+      if (!isAuthenticated && (currentPath === '/dashboard' || currentPath === '/profile' || currentPath === '/resume')) {
         navigate('/login');
       } else if (isAuthenticated && (currentPath === '/login' || currentPath === '/register')) {
-        navigate('/profile');
+        navigate('/dashboard');
       }
     }
   }, [isAuthenticated, isLoading, currentPath, navigate]);
@@ -76,6 +78,7 @@ export const App: React.FC = () => {
         <Sidebar />
 
         <main className="flex-1 p-6 sm:p-8 max-w-6xl overflow-x-hidden">
+          {currentPath === '/dashboard' && <DashboardPage />}
           {currentPath === '/profile' && <ProfilePage />}
           {currentPath === '/resume' && <ResumePage />}
           {currentPath === '/jobs' && <JobsPage />}

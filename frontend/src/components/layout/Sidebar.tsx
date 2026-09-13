@@ -1,13 +1,11 @@
 import React from 'react';
 import { useNavigationStore } from '../../store/navigationStore';
 import {
-  User,
   LayoutDashboard,
   Briefcase,
-  Sliders,
-  Milestone,
   FileText,
-  Database,
+  User,
+  Activity,
 } from 'lucide-react';
 
 interface NavItem {
@@ -19,13 +17,11 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Career Profile', icon: User, phase: 'Phase 3', path: '/profile', available: true },
+  { label: 'Dashboard', icon: LayoutDashboard, phase: 'Overview', path: '/dashboard', available: true },
+  { label: 'Job Discovery & Match', icon: Briefcase, phase: 'Phase 5', path: '/jobs', available: true },
   { label: 'Resume Review', icon: FileText, phase: 'Phase 4', path: '/resume', available: true },
-  { label: 'Job Discovery', icon: Briefcase, phase: 'Phase 5', path: '/jobs', available: true },
-  { label: 'System Health', icon: LayoutDashboard, phase: 'Phase 1', path: '/health', available: true },
-  { label: 'Career Simulator', icon: Sliders, phase: 'Phase 7', available: false },
-  { label: 'Career Roadmap', icon: Milestone, phase: 'Phase 8', available: false },
-  { label: 'Database & Models', icon: Database, phase: 'Phase 2', available: false },
+  { label: 'Career Profile', icon: User, phase: 'Phase 3', path: '/profile', available: true },
+  { label: 'System Health', icon: Activity, phase: 'Monitor', path: '/health', available: true },
 ];
 
 export const Sidebar: React.FC = () => {
@@ -82,9 +78,12 @@ export const Sidebar: React.FC = () => {
       </div>
 
       <div className="mt-auto p-4 border-t border-slate-800 text-[11px] text-slate-400">
-        <p className="font-semibold text-slate-300">Phase 5 Active</p>
-        <p className="mt-1 leading-relaxed">
-          Job Discovery & Deterministic Explainable Match Engine.
+        <p className="font-semibold text-slate-200 flex items-center space-x-1.5">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span>Phase 8 Active</span>
+        </p>
+        <p className="mt-1 leading-relaxed text-slate-400">
+          Complete Career Engine with deterministic matching, simulator & DAG roadmap.
         </p>
       </div>
     </aside>
