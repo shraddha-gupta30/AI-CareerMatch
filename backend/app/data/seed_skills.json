@@ -1,0 +1,490 @@
+{
+  "skills": [
+    {
+      "name": "Python",
+      "normalized_name": "python",
+      "category": "Languages"
+    },
+    {
+      "name": "Java",
+      "normalized_name": "java",
+      "category": "Languages"
+    },
+    {
+      "name": "JavaScript",
+      "normalized_name": "javascript",
+      "category": "Languages"
+    },
+    {
+      "name": "TypeScript",
+      "normalized_name": "typescript",
+      "category": "Languages"
+    },
+    {
+      "name": "C++",
+      "normalized_name": "c++",
+      "category": "Languages"
+    },
+    {
+      "name": "Go",
+      "normalized_name": "go",
+      "category": "Languages"
+    },
+    {
+      "name": "SQL",
+      "normalized_name": "sql",
+      "category": "Languages"
+    },
+    {
+      "name": "HTML",
+      "normalized_name": "html",
+      "category": "Languages"
+    },
+    {
+      "name": "CSS",
+      "normalized_name": "css",
+      "category": "Languages"
+    },
+    {
+      "name": "React",
+      "normalized_name": "react",
+      "category": "Frameworks"
+    },
+    {
+      "name": "Node.js",
+      "normalized_name": "node.js",
+      "category": "Frameworks"
+    },
+    {
+      "name": "FastAPI",
+      "normalized_name": "fastapi",
+      "category": "Frameworks"
+    },
+    {
+      "name": "Django",
+      "normalized_name": "django",
+      "category": "Frameworks"
+    },
+    {
+      "name": "Spring Boot",
+      "normalized_name": "spring boot",
+      "category": "Frameworks"
+    },
+    {
+      "name": "Express.js",
+      "normalized_name": "express.js",
+      "category": "Frameworks"
+    },
+    {
+      "name": "Vue.js",
+      "normalized_name": "vue.js",
+      "category": "Frameworks"
+    },
+    {
+      "name": "Tailwind CSS",
+      "normalized_name": "tailwind css",
+      "category": "Frameworks"
+    },
+    {
+      "name": "Next.js",
+      "normalized_name": "next.js",
+      "category": "Frameworks"
+    },
+    {
+      "name": "PostgreSQL",
+      "normalized_name": "postgresql",
+      "category": "Databases"
+    },
+    {
+      "name": "MySQL",
+      "normalized_name": "mysql",
+      "category": "Databases"
+    },
+    {
+      "name": "MongoDB",
+      "normalized_name": "mongodb",
+      "category": "Databases"
+    },
+    {
+      "name": "Redis",
+      "normalized_name": "redis",
+      "category": "Databases"
+    },
+    {
+      "name": "MariaDB",
+      "normalized_name": "mariadb",
+      "category": "Databases"
+    },
+    {
+      "name": "Docker",
+      "normalized_name": "docker",
+      "category": "Cloud/DevOps"
+    },
+    {
+      "name": "Kubernetes",
+      "normalized_name": "kubernetes",
+      "category": "Cloud/DevOps"
+    },
+    {
+      "name": "AWS",
+      "normalized_name": "aws",
+      "category": "Cloud/DevOps"
+    },
+    {
+      "name": "Azure",
+      "normalized_name": "azure",
+      "category": "Cloud/DevOps"
+    },
+    {
+      "name": "Git",
+      "normalized_name": "git",
+      "category": "Tools"
+    },
+    {
+      "name": "GitHub",
+      "normalized_name": "github",
+      "category": "Tools"
+    },
+    {
+      "name": "Linux",
+      "normalized_name": "linux",
+      "category": "Tools"
+    },
+    {
+      "name": "CI/CD",
+      "normalized_name": "ci/cd",
+      "category": "Cloud/DevOps"
+    },
+    {
+      "name": "REST API",
+      "normalized_name": "rest api",
+      "category": "Architecture"
+    },
+    {
+      "name": "GraphQL",
+      "normalized_name": "graphql",
+      "category": "Architecture"
+    },
+    {
+      "name": "Machine Learning",
+      "normalized_name": "machine learning",
+      "category": "AI/ML"
+    },
+    {
+      "name": "Deep Learning",
+      "normalized_name": "deep learning",
+      "category": "AI/ML"
+    },
+    {
+      "name": "TensorFlow",
+      "normalized_name": "tensorflow",
+      "category": "AI/ML"
+    },
+    {
+      "name": "PyTorch",
+      "normalized_name": "pytorch",
+      "category": "AI/ML"
+    },
+    {
+      "name": "Pandas",
+      "normalized_name": "pandas",
+      "category": "Data Science"
+    },
+    {
+      "name": "NumPy",
+      "normalized_name": "numpy",
+      "category": "Data Science"
+    },
+    {
+      "name": "Scikit-learn",
+      "normalized_name": "scikit-learn",
+      "category": "AI/ML"
+    },
+    {
+      "name": "Data Analysis",
+      "normalized_name": "data analysis",
+      "category": "Data Science"
+    },
+    {
+      "name": "Data Visualization",
+      "normalized_name": "data visualization",
+      "category": "Data Science"
+    },
+    {
+      "name": "Selenium",
+      "normalized_name": "selenium",
+      "category": "Testing/QA"
+    },
+    {
+      "name": "Pytest",
+      "normalized_name": "pytest",
+      "category": "Testing/QA"
+    },
+    {
+      "name": "Jest",
+      "normalized_name": "jest",
+      "category": "Testing/QA"
+    }
+  ],
+  "aliases": [
+    {
+      "skill_name": "PostgreSQL",
+      "alias": "postgres"
+    },
+    {
+      "skill_name": "PostgreSQL",
+      "alias": "pgsql"
+    },
+    {
+      "skill_name": "React",
+      "alias": "reactjs"
+    },
+    {
+      "skill_name": "React",
+      "alias": "react.js"
+    },
+    {
+      "skill_name": "Node.js",
+      "alias": "nodejs"
+    },
+    {
+      "skill_name": "Node.js",
+      "alias": "node"
+    },
+    {
+      "skill_name": "AWS",
+      "alias": "amazon web services"
+    },
+    {
+      "skill_name": "Azure",
+      "alias": "microsoft azure"
+    },
+    {
+      "skill_name": "Kubernetes",
+      "alias": "k8s"
+    },
+    {
+      "skill_name": "Scikit-learn",
+      "alias": "sklearn"
+    },
+    {
+      "skill_name": "Tailwind CSS",
+      "alias": "tailwind"
+    },
+    {
+      "skill_name": "Express.js",
+      "alias": "express"
+    },
+    {
+      "skill_name": "Vue.js",
+      "alias": "vue"
+    },
+    {
+      "skill_name": "Next.js",
+      "alias": "nextjs"
+    },
+    {
+      "skill_name": "REST API",
+      "alias": "restful api"
+    }
+  ],
+  "relationships": [
+    {
+      "source_skill": "MariaDB",
+      "target_skill": "MySQL",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.85
+    },
+    {
+      "source_skill": "MySQL",
+      "target_skill": "MariaDB",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.85
+    },
+    {
+      "source_skill": "MySQL",
+      "target_skill": "PostgreSQL",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.7
+    },
+    {
+      "source_skill": "MariaDB",
+      "target_skill": "PostgreSQL",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.65
+    },
+    {
+      "source_skill": "Vue.js",
+      "target_skill": "React",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.6
+    },
+    {
+      "source_skill": "React",
+      "target_skill": "Vue.js",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.6
+    },
+    {
+      "source_skill": "FastAPI",
+      "target_skill": "Django",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.65
+    },
+    {
+      "source_skill": "Django",
+      "target_skill": "FastAPI",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.7
+    },
+    {
+      "source_skill": "TypeScript",
+      "target_skill": "JavaScript",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.9
+    },
+    {
+      "source_skill": "JavaScript",
+      "target_skill": "TypeScript",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.75
+    },
+    {
+      "source_skill": "TensorFlow",
+      "target_skill": "PyTorch",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.7
+    },
+    {
+      "source_skill": "PyTorch",
+      "target_skill": "TensorFlow",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.7
+    },
+    {
+      "source_skill": "Azure",
+      "target_skill": "AWS",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.65
+    },
+    {
+      "source_skill": "AWS",
+      "target_skill": "Azure",
+      "relationship_type": "transferable",
+      "similarity_weight": 0.65
+    },
+    {
+      "source_skill": "Jest",
+      "target_skill": "Pytest",
+      "relationship_type": "related",
+      "similarity_weight": 0.5
+    }
+  ],
+  "prerequisites": [
+    {
+      "skill": "TypeScript",
+      "prerequisite": "JavaScript",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "React",
+      "prerequisite": "JavaScript",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "Vue.js",
+      "prerequisite": "JavaScript",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "Next.js",
+      "prerequisite": "React",
+      "difficulty_tier": 3
+    },
+    {
+      "skill": "Node.js",
+      "prerequisite": "JavaScript",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "Express.js",
+      "prerequisite": "Node.js",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "FastAPI",
+      "prerequisite": "Python",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "Django",
+      "prerequisite": "Python",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "Pandas",
+      "prerequisite": "Python",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "NumPy",
+      "prerequisite": "Python",
+      "difficulty_tier": 1
+    },
+    {
+      "skill": "Scikit-learn",
+      "prerequisite": "Pandas",
+      "difficulty_tier": 3
+    },
+    {
+      "skill": "Machine Learning",
+      "prerequisite": "Python",
+      "difficulty_tier": 3
+    },
+    {
+      "skill": "Deep Learning",
+      "prerequisite": "Machine Learning",
+      "difficulty_tier": 4
+    },
+    {
+      "skill": "PyTorch",
+      "prerequisite": "Deep Learning",
+      "difficulty_tier": 4
+    },
+    {
+      "skill": "TensorFlow",
+      "prerequisite": "Deep Learning",
+      "difficulty_tier": 4
+    },
+    {
+      "skill": "PostgreSQL",
+      "prerequisite": "SQL",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "MySQL",
+      "prerequisite": "SQL",
+      "difficulty_tier": 1
+    },
+    {
+      "skill": "Docker",
+      "prerequisite": "Linux",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "Kubernetes",
+      "prerequisite": "Docker",
+      "difficulty_tier": 4
+    },
+    {
+      "skill": "CI/CD",
+      "prerequisite": "Git",
+      "difficulty_tier": 2
+    },
+    {
+      "skill": "Tailwind CSS",
+      "prerequisite": "CSS",
+      "difficulty_tier": 1
+    }
+  ]
+}

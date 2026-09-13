@@ -1,0 +1,1670 @@
+[
+  {
+    "title": "Junior Frontend Developer",
+    "company": "PixelCraft Technologies",
+    "location": "Remote / New York, NY",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 0.5,
+    "target_education_level": "Bachelor",
+    "description": "Join our front-end team building responsive, modern user interfaces with React and Tailwind CSS. You will collaborate with UX designers and backend engineers to craft engaging web experiences.",
+    "salary_range": "$65,000 - $80,000",
+    "skills": [
+      {
+        "skill_name": "JavaScript",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "React",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "HTML",
+        "is_required": true,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CSS",
+        "is_required": true,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "TypeScript",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Tailwind CSS",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "React Frontend Engineer",
+    "company": "Apex Cloud Systems",
+    "location": "San Francisco, CA",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.5,
+    "target_education_level": "Bachelor",
+    "description": "Seeking an experienced React developer proficient in TypeScript, client-side state management, and modern component architectures.",
+    "salary_range": "$105,000 - $125,000",
+    "skills": [
+      {
+        "skill_name": "React",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "TypeScript",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "JavaScript",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Tailwind CSS",
+        "is_required": true,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Next.js",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Jest",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Backend Python Developer",
+    "company": "Novasphere Data Solutions",
+    "location": "Austin, TX / Hybrid",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 1.0,
+    "target_education_level": "Bachelor",
+    "description": "Develop and maintain high-throughput RESTful APIs using Python, FastAPI, and PostgreSQL. Ideal for developers with strong relational database and API design fundamentals.",
+    "salary_range": "$75,000 - $95,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "FastAPI",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "PostgreSQL",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "REST API",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Docker",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Redis",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Full Stack Engineer",
+    "company": "Vanguard Digital Labs",
+    "location": "Chicago, IL / Hybrid",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Bachelor",
+    "description": "Own features end-to-end across React frontends and Node.js backend microservices backed by PostgreSQL and Redis caches.",
+    "salary_range": "$95,000 - $120,000",
+    "skills": [
+      {
+        "skill_name": "React",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Node.js",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "TypeScript",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "PostgreSQL",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Docker",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": false,
+        "importance_weight": 0.7,
+        "min_proficiency": "intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Java Backend Engineer",
+    "company": "IronClad Financial Tech",
+    "location": "Boston, MA",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 3.0,
+    "target_education_level": "Bachelor",
+    "description": "Design mission-critical enterprise banking services using Java 17+, Spring Boot, and PostgreSQL with strict transaction isolation and testing.",
+    "salary_range": "$110,000 - $135,000",
+    "skills": [
+      {
+        "skill_name": "Java",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Spring Boot",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "REST API",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Docker",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CI/CD",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Junior Data Analyst",
+    "company": "Metrix Insights Co.",
+    "location": "Atlanta, GA / Remote",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 0.5,
+    "target_education_level": "Bachelor",
+    "description": "Perform exploratory data analysis, build executive dashboards, and extract business insights using SQL, Pandas, and visualization tools.",
+    "salary_range": "$60,000 - $75,000",
+    "skills": [
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Data Analysis",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Data Visualization",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Pandas",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Python",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Associate Data Scientist",
+    "company": "Kinetix Analytics",
+    "location": "Seattle, WA",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Master",
+    "description": "Build predictive models and machine learning pipelines to solve complex forecasting problems. Requires rigorous statistical foundation.",
+    "salary_range": "$115,000 - $140,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Machine Learning",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Pandas",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "NumPy",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Scikit-learn",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "SQL",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Machine Learning Engineer",
+    "company": "Cognitive Scale AI",
+    "location": "San Jose, CA",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 3.0,
+    "target_education_level": "Master",
+    "description": "Deploy deep learning models to production clusters, optimizing inference latency and tracking model drift.",
+    "salary_range": "$130,000 - $160,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "PyTorch",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Deep Learning",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Docker",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "TensorFlow",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Kubernetes",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "AI / Machine Learning Intern",
+    "company": "Nexus Robotics & AI",
+    "location": "Pittsburgh, PA / Hybrid",
+    "employment_type": "internship",
+    "experience_level": "entry",
+    "min_experience_years": 0.0,
+    "target_education_level": "Bachelor",
+    "description": "Summer internship researching and implementing computer vision and NLP models. Perfect for university students studying computer science or data science.",
+    "salary_range": "$35 - $45 / hour",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Machine Learning",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "NumPy",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "PyTorch",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Cloud DevOps Engineer",
+    "company": "Stratosphere Cloud Platforms",
+    "location": "Denver, CO / Remote",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.5,
+    "target_education_level": "Bachelor",
+    "description": "Automate infrastructure provisioning, maintain CI/CD deployment pipelines, and configure Kubernetes clusters on AWS.",
+    "salary_range": "$110,000 - $135,000",
+    "skills": [
+      {
+        "skill_name": "Docker",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Kubernetes",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "AWS",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CI/CD",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Linux",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Python",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Cloud Infrastructure Engineer",
+    "company": "BlueRidge Solutions",
+    "location": "Charlotte, NC",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Bachelor",
+    "description": "Build and secure scalable cloud environments using Microsoft Azure, Docker containerization, and automated CI/CD tooling.",
+    "salary_range": "$100,000 - $125,000",
+    "skills": [
+      {
+        "skill_name": "Azure",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Docker",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Linux",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CI/CD",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Kubernetes",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Software Test Automation Engineer",
+    "company": "QualityFirst Systems",
+    "location": "Raleigh, NC / Remote",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 1.0,
+    "target_education_level": "Bachelor",
+    "description": "Design automated functional and integration test suites using Python, Pytest, and Selenium across continuous integration workflows.",
+    "salary_range": "$70,000 - $88,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Pytest",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Selenium",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": true,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CI/CD",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Database Engineer (PostgreSQL)",
+    "company": "CoreRelational Data Inc.",
+    "location": "Dallas, TX",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 3.0,
+    "target_education_level": "Bachelor",
+    "description": "Design relational schemas, optimize complex SQL queries, and manage indexing strategies and data migration pipelines on PostgreSQL.",
+    "salary_range": "$105,000 - $130,000",
+    "skills": [
+      {
+        "skill_name": "PostgreSQL",
+        "is_required": true,
+        "importance_weight": 1.9,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Redis",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Linux",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Python",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Systems Software Engineer",
+    "company": "QuantEdge Algorithms",
+    "location": "New York, NY",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Bachelor",
+    "description": "Develop high-performance, low-latency concurrent processing pipelines using modern C++ (C++17/20) on Linux platforms.",
+    "salary_range": "$125,000 - $155,000",
+    "skills": [
+      {
+        "skill_name": "C++",
+        "is_required": true,
+        "importance_weight": 1.9,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Linux",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": true,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Python",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Go Microservices Developer",
+    "company": "StreamScale Networks",
+    "location": "Remote / Seattle, WA",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.5,
+    "target_education_level": "Bachelor",
+    "description": "Architect distributed microservices in Go, communicating via gRPC and REST APIs with PostgreSQL data persistence and Docker deployments.",
+    "salary_range": "$115,000 - $140,000",
+    "skills": [
+      {
+        "skill_name": "Go",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "REST API",
+        "is_required": true,
+        "importance_weight": 1.3,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "PostgreSQL",
+        "is_required": true,
+        "importance_weight": 1.3,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Docker",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Kubernetes",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Junior Python Web Developer",
+    "company": "TechSpark Digital",
+    "location": "Miami, FL / Hybrid",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 0.5,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on junior python web developer responsibilities at TechSpark Digital. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$68,000 - $82,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Django",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "HTML",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Frontend UI Engineer",
+    "company": "CreativeCanvas Studio",
+    "location": "Los Angeles, CA",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 1.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on frontend ui engineer responsibilities at CreativeCanvas Studio. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$78,000 - $92,000",
+    "skills": [
+      {
+        "skill_name": "JavaScript",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "React",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CSS",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Tailwind CSS",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Associate Full Stack Engineer",
+    "company": "OmniFlow Software",
+    "location": "Phoenix, AZ / Remote",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 1.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on associate full stack engineer responsibilities at OmniFlow Software. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$75,000 - $90,000",
+    "skills": [
+      {
+        "skill_name": "TypeScript",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "React",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Node.js",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "MongoDB",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Backend API Engineer (Django)",
+    "company": "DataBridge Hub",
+    "location": "Salt Lake City, UT",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on backend api engineer (django) responsibilities at DataBridge Hub. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$92,000 - $115,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.7,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Django",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "PostgreSQL",
+        "is_required": true,
+        "importance_weight": 1.3,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Redis",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Data Engineering Associate",
+    "company": "InfoStream Pipeline Co.",
+    "location": "Minneapolis, MN",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on data engineering associate responsibilities at InfoStream Pipeline Co.. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$95,000 - $118,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.7,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "PostgreSQL",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Docker",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Junior Java Software Developer",
+    "company": "FinCore Systems",
+    "location": "Columbus, OH",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 0.5,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on junior java software developer responsibilities at FinCore Systems. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$65,000 - $80,000",
+    "skills": [
+      {
+        "skill_name": "Java",
+        "is_required": true,
+        "importance_weight": 1.7,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.3,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Spring Boot",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Web Application Developer",
+    "company": "Beacon Interactive",
+    "location": "Portland, OR / Remote",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 1.0,
+    "target_education_level": "Associate",
+    "description": "Role focusing on web application developer responsibilities at Beacon Interactive. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$70,000 - $85,000",
+    "skills": [
+      {
+        "skill_name": "HTML",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CSS",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "JavaScript",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Machine Learning Research Assistant",
+    "company": "Aether Mind Labs",
+    "location": "Cambridge, MA",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 0.5,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on machine learning research assistant responsibilities at Aether Mind Labs. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$72,000 - $88,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "NumPy",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Pandas",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "PyTorch",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Site Reliability Engineer (SRE)",
+    "company": "CloudSentinel Systems",
+    "location": "San Diego, CA",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 3.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on site reliability engineer (sre) responsibilities at CloudSentinel Systems. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$120,000 - $145,000",
+    "skills": [
+      {
+        "skill_name": "Linux",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Docker",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Kubernetes",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Python",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Junior QA Automation Engineer",
+    "company": "VerifyRight Tech",
+    "location": "Tampa, FL / Remote",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 0.5,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on junior qa automation engineer responsibilities at VerifyRight Tech. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$60,000 - $75,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Pytest",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Selenium",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Full Stack React/FastAPI Developer",
+    "company": "AeroTech Solutions",
+    "location": "Huntsville, AL",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 1.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on full stack react/fastapi developer responsibilities at AeroTech Solutions. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$74,000 - $92,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "FastAPI",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "React",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "PostgreSQL",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Database Administrator Assistant",
+    "company": "Anchor Storage Technologies",
+    "location": "Kansas City, MO",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 1.0,
+    "target_education_level": "Associate",
+    "description": "Role focusing on database administrator assistant responsibilities at Anchor Storage Technologies. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$62,000 - $78,000",
+    "skills": [
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "MySQL",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Linux",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Next.js Frontend Specialist",
+    "company": "DigitalPulse Media",
+    "location": "New York, NY / Remote",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on next.js frontend specialist responsibilities at DigitalPulse Media. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$100,000 - $122,000",
+    "skills": [
+      {
+        "skill_name": "React",
+        "is_required": true,
+        "importance_weight": 1.7,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Next.js",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "TypeScript",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Tailwind CSS",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Cloud Solutions Associate",
+    "company": "SkyBound Consulting",
+    "location": "Philadelphia, PA",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 1.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on cloud solutions associate responsibilities at SkyBound Consulting. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$72,000 - $88,000",
+    "skills": [
+      {
+        "skill_name": "AWS",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Linux",
+        "is_required": true,
+        "importance_weight": 1.3,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Docker",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Computer Vision Engineer",
+    "company": "Visionary Robotic Systems",
+    "location": "Detroit, MI",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 3.0,
+    "target_education_level": "Master",
+    "description": "Role focusing on computer vision engineer responsibilities at Visionary Robotic Systems. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$125,000 - $150,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "PyTorch",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Deep Learning",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "C++",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Backend Software Intern",
+    "company": "Orbit Data Corp",
+    "location": "San Antonio, TX",
+    "employment_type": "internship",
+    "experience_level": "internship",
+    "min_experience_years": 0.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on backend software intern responsibilities at Orbit Data Corp. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$28 - $36 / hour",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "FastAPI",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Frontend Engineering Intern",
+    "company": "Loom Interface Lab",
+    "location": "Providence, RI / Hybrid",
+    "employment_type": "internship",
+    "experience_level": "internship",
+    "min_experience_years": 0.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on frontend engineering intern responsibilities at Loom Interface Lab. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$28 - $35 / hour",
+    "skills": [
+      {
+        "skill_name": "JavaScript",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "HTML",
+        "is_required": true,
+        "importance_weight": 1.3,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "CSS",
+        "is_required": true,
+        "importance_weight": 1.3,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "React",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Data Science Intern",
+    "company": "InsightSphere Labs",
+    "location": "Baltimore, MD",
+    "employment_type": "internship",
+    "experience_level": "internship",
+    "min_experience_years": 0.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on data science intern responsibilities at InsightSphere Labs. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$30 - $40 / hour",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.7,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Pandas",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Data Analysis",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Junior Node.js Developer",
+    "company": "HyperLoop Commerce",
+    "location": "Las Vegas, NV",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 1.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on junior node.js developer responsibilities at HyperLoop Commerce. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$70,000 - $86,000",
+    "skills": [
+      {
+        "skill_name": "JavaScript",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Node.js",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Express.js",
+        "is_required": true,
+        "importance_weight": 1.3,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "MongoDB",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Vue.js Frontend Engineer",
+    "company": "Zenith UI Platforms",
+    "location": "Sacramento, CA / Remote",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on vue.js frontend engineer responsibilities at Zenith UI Platforms. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$92,000 - $112,000",
+    "skills": [
+      {
+        "skill_name": "JavaScript",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Vue.js",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "HTML",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CSS",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Tailwind CSS",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "intermediate"
+      }
+    ]
+  },
+  {
+    "title": "Data Platform Developer",
+    "company": "OmniData Analytics",
+    "location": "Nashville, TN",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.5,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on data platform developer responsibilities at OmniData Analytics. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$102,000 - $125,000",
+    "skills": [
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "PostgreSQL",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Redis",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "DevOps Deployment Specialist",
+    "company": "PipelineFlow Tech",
+    "location": "Indianapolis, IN / Remote",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on devops deployment specialist responsibilities at PipelineFlow Tech. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$98,000 - $120,000",
+    "skills": [
+      {
+        "skill_name": "Docker",
+        "is_required": true,
+        "importance_weight": 1.7,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CI/CD",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Linux",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "intermediate"
+      }
+    ]
+  },
+  {
+    "title": "AI NLP Engineer",
+    "company": "LinguaGen Cognitive",
+    "location": "St. Louis, MO",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 3.0,
+    "target_education_level": "Master",
+    "description": "Role focusing on ai nlp engineer responsibilities at LinguaGen Cognitive. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$132,000 - $160,000",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "advanced"
+      },
+      {
+        "skill_name": "Deep Learning",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "PyTorch",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "TensorFlow",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Web Application Security QA",
+    "company": "CyberGuard Systems",
+    "location": "Richmond, VA",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.5,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on web application security qa responsibilities at CyberGuard Systems. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$95,000 - $118,000",
+    "skills": [
+      {
+        "skill_name": "Linux",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Python",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "REST API",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Selenium",
+        "is_required": false,
+        "importance_weight": 1.0,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Software Developer in Test (SDET)",
+    "company": "LogicGate Quality",
+    "location": "Milwaukee, WI / Remote",
+    "employment_type": "full-time",
+    "experience_level": "mid",
+    "min_experience_years": 2.0,
+    "target_education_level": "Bachelor",
+    "description": "Role focusing on software developer in test (sdet) responsibilities at LogicGate Quality. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$90,000 - $112,000",
+    "skills": [
+      {
+        "skill_name": "Java",
+        "is_required": true,
+        "importance_weight": 1.6,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Selenium",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": true,
+        "importance_weight": 1.2,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "CI/CD",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Junior Database Administrator",
+    "company": "NexusBase Data",
+    "location": "Albuquerque, NM",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 0.5,
+    "target_education_level": "Associate",
+    "description": "Role focusing on junior database administrator responsibilities at NexusBase Data. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$58,000 - $72,000",
+    "skills": [
+      {
+        "skill_name": "SQL",
+        "is_required": true,
+        "importance_weight": 1.8,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "MySQL",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "intermediate"
+      },
+      {
+        "skill_name": "Linux",
+        "is_required": false,
+        "importance_weight": 0.9,
+        "min_proficiency": "beginner"
+      }
+    ]
+  },
+  {
+    "title": "Junior Cloud Support Engineer",
+    "company": "Cirrus Cloud Works",
+    "location": "Hartford, CT",
+    "employment_type": "full-time",
+    "experience_level": "entry",
+    "min_experience_years": 0.5,
+    "target_education_level": "Associate",
+    "description": "Role focusing on junior cloud support engineer responsibilities at Cirrus Cloud Works. You will participate in high-impact engineering projects with a modern technical stack.",
+    "salary_range": "$62,000 - $76,000",
+    "skills": [
+      {
+        "skill_name": "Linux",
+        "is_required": true,
+        "importance_weight": 1.5,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "AWS",
+        "is_required": true,
+        "importance_weight": 1.4,
+        "min_proficiency": "beginner"
+      },
+      {
+        "skill_name": "Git",
+        "is_required": false,
+        "importance_weight": 0.8,
+        "min_proficiency": "beginner"
+      }
+    ]
+  }
+]
