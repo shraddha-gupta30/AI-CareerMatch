@@ -34,7 +34,7 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: ALLOWED_ORIGINS
-        value: "https://ai-careermatch-frontend.onrender.com,http://localhost:5173"
+        value: "https://ai-careermatch-frontend-p372.onrender.com,https://ai-careermatch-frontend.onrender.com,http://localhost:5173"
       - key: GEMINI_API_KEY
         sync: false
       - key: DB_TIMEOUT
@@ -57,4 +57,4 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_BASE_URL
-        value: "https://ai-careermatch-backend.onrender.com/api/v1"
+        value: "https://ai-careermatch-2o8y.onrender.com/api/v1"
